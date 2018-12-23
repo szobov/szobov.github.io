@@ -25,7 +25,7 @@ Have a great time!
 
 ### Here is the test of the code highlighting and the small c++ advice
 
-Do not forget to make a shared pointers from `this` if you pass it in lambda or bind, especially if you will use it somehow asynchronously, e.g. with `boost::asio`. In case you'd pass it as a raw pointer, you can get a segmentation fault because object won't be tracked by `shared_ptr`:
+Do not forget to [make a shared pointer](https://en.cppreference.com/w/cpp/memory/enable_shared_from_this) from `this` if you pass it in [lambda](https://en.cppreference.com/w/cpp/language/lambda) or [bind](https://en.cppreference.com/w/cpp/utility/functional/bind), especially if you will use it somehow asynchronously, e.g. with [boost::asio](https://www.boost.org/doc/libs/1_69_0/doc/html/boost_asio.html). In case you'd pass it as a raw pointer, you can get a segmentation fault because object won't be tracked by `shared_ptr`:
 
 {% highlight c++ %}
 #include <functional>
