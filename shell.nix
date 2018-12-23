@@ -4,6 +4,12 @@ let
   ruby = pkgs.ruby_2_3;
 in
 let
+
+  utils = with pkgs; [
+      bundix
+  ];
+
+
   jekyll_env = pkgs.bundlerEnv {
       name = "szobov.github.io";
 
@@ -15,5 +21,5 @@ let
 in
   stdenv.mkDerivation rec {
     name = "jekyll_env";
-    buildInputs = [ jekyll_env ];
+    buildInputs = [ jekyll_env utils ];
   }
