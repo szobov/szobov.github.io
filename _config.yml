@@ -2,4 +2,4 @@
 highlighter: rouge
 url: http://szobov.github.io
 lsi: false
-exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
+exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock, shell.nix, gemset.nix]
