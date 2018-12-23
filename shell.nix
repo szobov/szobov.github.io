@@ -11,7 +11,7 @@ let
 
 
   jekyll_env = pkgs.bundlerEnv {
-      name = "szobov.github.io";
+      name = "jekill_env";
 
       inherit ruby;
       gemfile = ./Gemfile;
@@ -20,6 +20,6 @@ let
   };
 in
   stdenv.mkDerivation rec {
-    name = "jekyll_env";
+    name = "szobov.github.io";
     buildInputs = [ jekyll_env utils ];
   }
