@@ -1,4 +1,5 @@
 # General Jekyll Config
+markdown: kramdown
 highlighter: rouge
 url: http://szobov.github.io
 lsi: false
