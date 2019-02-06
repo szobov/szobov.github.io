@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Example of writing c++ tests in ROS
+title: Example of writing C++ tests in ROS (Kitetic)
 categories:
 - blog
 tags:
@@ -11,81 +11,129 @@ tags:
 
 # {{ page.title }}
 
+### Background
+
+> Untested Code is Broken Code
+
+Half year ago I wrote my first ROS C++ code. Along with it, I've started to look into documentation to find how to test my code. Unfortunately, I've found several resources, but all of them didn't provide a good example of what should I actually do to make my test work well with ROS. Plus I want my test to show debug output if I need it.
+Here is small boilerplate that you can use to cover you code using test and take an advantages that I've mentioned above. Also I provide you an example how to run your tests.
+
+### Environment
+
+My current environment:
+* Ubuntu 16.04
+* CMake 3.5.1
+* [ROS Kinetic](https://wiki.ros.org/kinetic/Installation/Ubuntu)
+* [googletest v1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1)
+
+### Directory structure
+
+```
+.
+├── ...
+├── CMakeLists.txt
+├── package.xml
+├── src
+│   ├── source.cpp
+└── test
+    ├── source_test.cpp
+    └── source_test.launch
+```
+
 ### CMakeList.txt
 
-    add_rostest_gtest(target_test
-        test/target_test.launch
-        test/target_test.cpp
+```cmake
+...
+if (CATKIN_ENABLE_TESTING)
+    find_package(GTest REQUIRED)
+    find_package(rostest REQUIRED)
+
+    add_rostest_gtest(source_test
+        test/source_test.launch
+        test/source_test.cpp
+        src/source.cpp
     )
-    add_dependencies(target_test
+    add_dependencies(source_test
     )
-    target_link_libraries(target_test
+    target_link_libraries(source_test
         ${catkin_LIBRARIES} ${GTEST_LIBRARIES}
     )
+endif()
+```
+### Launch file `test/source_test.launch`
 
-### Launch file `test/target_test.launch`
+It's very useful to write `ROSCONSOLE_FROMAT` to make log-messages in your code prettier. Also it's better do not write long test and limit it with the argument `time-limit`.
 
-     <launch>
-        <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${time}] ${logger}: ${message}"/>
-        <test test-name="test" pkg="package_name" type="target_test" time-limit="10.0">
-        </test>
-    </launch>
+```xml
+<launch>
+    <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${time}] ${logger}: ${message}"/>
+    <test test-name="test" pkg="package_name" type="source_test" time-limit="10.0">
+    </test>
+</launch>
+```
 
-### Test file `test/target_test.cpp`
+### Test file `test/source_test.cpp`
 
-    #include <ros/ros.h>
-    #include <gtest/gtest.h>
+```cpp
+#include <ros/ros.h>
+#include <gtest/gtest.h>
 
 
-     class TargetTest: public ::testing::Test
+class TargetTest: public ::testing::Test
+{
+public:
+    TargetTest(): spinner(0) {};
+    ~TargetTest() {};
+
+    ros::NodeHandle* node;
+    ros::AsyncSpinner* spinner;
+
+    void SetUp() override
     {
-    public:
-        TargetTest(): spinner(0) {};
-        ~TargetTest() {};
-
-         ros::NodeHandle* node;
-        ros::AsyncSpinner* spinner;
-
- 		void SetUp() override
-		{
-				::testing::Test::SetUp();
-				this->node = new ros::NodeHandle("~");
-				this->spinner = new ros::AsyncSpinner(0);
-				this->spinner->start();
-		};
-
- 		void TearDown() override
-		{
-				ros::shutdown();
-				delete this->spinner;
-				delete this->node;
-				::testing::Test::TearDown();
-		}
+        ::testing::Test::SetUp();
+        this->node = new ros::NodeHandle("~");
+        this->spinner = new ros::AsyncSpinner(0);
+        this->spinner->start();
     };
 
-     TEST_F(TargetTest, test_ok)
+    void TearDown() override
     {
-        ...
+        ros::shutdown();
+        delete this->spinner;
+        delete this->node;
+        ::testing::Test::TearDown();
     }
+};
 
-     int main(int argc, char **argv)
+TEST_F(TargetTest, test_ok)
+{
+    ...
+}
+
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "node_name");
+    if (ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Debug))
     {
-		ros::init(argc, argv, "node_name");
-		if(ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Debug))
-		{
-				ros::console::notifyLoggerLevelsChanged();
-		}
-		::testing::InitGoogleTest(&argc, argv);
-		return RUN_ALL_TESTS();
+        ros::console::notifyLoggerLevelsChanged(); // To show debug output in the tests
     }
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
 
+```
 ### Launch this test
 
-    # Make packages and run test, but it logging will be only for ROS_ERROR*
-    $ catkin_make && catking make run_tests_package_name_rostest_test_target_test.launch
+```shell
+# Build packages and run tests. But it will show output only for log-messages with ERROR-level.
+$ catkin_make && catking make run_tests_package_name_rostest_test_source_test.launch
     
-    # After you can run test with DEBUG logging level
-    $ rostest --text package_name target_test.launch
-    
-    # In order to run test on CI (return error if any test is failed)
-    $ catkin_make run_tests && catkin_test_results
+# After your tests are built, you can run it with DEBUG logging level
+$ rostest --text package_name source_test.launch
+```
+
+By default, `catkin_make` returns `0` even if one or more tests are failed. For developing it's acceptable, but if we want to run tests on CI we can you this commands:
+```shell
+# In order to run test on CI (return error if any tests are failed)
+$ catkin_make run_tests && catkin_test_results
+```
