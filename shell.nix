@@ -22,4 +22,8 @@ in
   stdenv.mkDerivation rec {
     name = "szobov.github.io";
     buildInputs = [ jekyll_env utils ];
+
+    shellHook = ''
+      jekyll server --drafts
+    '';
   }
