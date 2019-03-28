@@ -140,7 +140,7 @@ int main(int argc, char **argv)
 
 ```shell
 # Build package and run tests. But it will show output only for log-messages with ERROR level.
-$ catkin_make && catking make run_tests_package_name_rostest_test_source_test.launch
+$ catkin_make && catkin_make run_tests_package_name_rostest_test_source_test.launch
     
 # After your tests are built, you can run it with DEBUG logging level
 $ rostest --text package_name source_test.launch
