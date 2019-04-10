@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The caveats for robotic (UAV) project in a very cold winter
+title: The caveats for robotic (UAV) projects in a cold winter
 categories:
 - blog
 tags:
@@ -15,8 +15,8 @@ tags:
 
 ## Background
 
-As I've mentioned in previous [article]({% post_url 2018-12-24-try-to-avoid-using-usb3.0-and-2.4hz-radio-like-gps %}), my team works on UAV project, also from time to time we do a trials on a wild nature.
-Because of our company located on a north, in a quite cold climatic zone, we often have a different problems, related to extreme weather condition.
+As I've mentioned in previous [article]({% post_url 2018-12-24-try-to-avoid-using-usb3.0-and-2.4hz-radio-like-gps %}), my team works on UAV project. Also from time to time we do the trials on a wild nature.
+Because of our company located on a north of Russia, in a quite cold climatic zone, we often have a different problems, related to extreme weather condition.
 
 I've decided to mention here a list of this problems and advice how to avoid or mitigate it. May be I'll update this article it there are will be more. I understand that it's maybe obvious, but you'll work in the similar conditions it might help.
 
@@ -35,7 +35,7 @@ As you can noticed, it's a big deal to choose right devices for your project, es
 ### Water
 
 Let's imagine wet snow, not my favorite weather. The drops drain through you jacket, cover your face and hands. Very unpleasant feelings actually.
-So, it's not only about winter, but keep in mind: you have to make your drone waterproofed, at least most important parts, because water will find a way how to break your hardware.
+So, it's not only about winter, but keep in mind: you have to make your drone waterproofed, at least most important parts, because water will find a way how to break into your hardware.
 One of the chip but useful solution could be plastic coverage for drone, some thing [like this](https://www.ebay.ie/itm/201379747797) for *TBS Discovery*.
 
 ![coverage](/assets/images/robotics-and-uav-projects-cold-weather/tbs-cover.jpg)
@@ -43,3 +43,11 @@ One of the chip but useful solution could be plastic coverage for drone, some th
 Or you can find or print your own case, like this for [ODROID XU4](https://www.thingiverse.com/thing:3225094).
 
 Also, snow can be a huge problem for visual navigation. For example, [detection of ArUco markers](https://docs.opencv.org/4.0.0/d5/dae/tutorial_aruco_detection.html) by camera would work bad or doesn't work at all in heavy snow condition. I suppose, solution, that relies on infrared emission, like [MarkOne Beacon](https://irlock.com/products/markone-beacon-v2-0) could also work unsafe.
+
+## People
+
+Do not forget about humans. If you want to test your code on a battlefield, it would be better to buy suitable equipment:
+* Insulated workwear. It's quite comfortable and practical, because it's been designed to protect people, that would work, for example, near to North Pole. Also it has great utilities, like unfastening back part of the pants, and trust me you'll use it. You can find this kind of clothes in special shops, like [this](https://en.vostok.ru/catalog/).
+* Gaiters, https://www.berghaus.com/on/demandware.store/Sites-brggbgbp-Site/en_MU/GeoShow-Product?pid=433091
+* Goretex boots
+* Car with independent heater, http://www.branoslovakia.sk/en/index.php?id=30
