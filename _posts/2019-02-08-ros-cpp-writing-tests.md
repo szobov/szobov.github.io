@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Example of writing C++ tests in ROS (Kitetic)
+title: Example of writing C++ tests in ROS (Kinetic)
 categories:
 - blog
 tags:
