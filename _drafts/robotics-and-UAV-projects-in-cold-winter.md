@@ -18,7 +18,11 @@ tags:
 As I've mentioned in previous [article]({% post_url 2018-12-24-try-to-avoid-using-usb3.0-and-2.4hz-radio-like-gps %}), my team works on UAV project. Also from time to time we do the trials on a wild nature.
 Because of our company located on a north of Russia, in a quite cold climatic zone, we often have a different problems, related to extreme weather condition.
 
-I've decided to mention here a list of this problems and advice how to avoid or mitigate it. May be I'll update this article it there are will be more. I understand that it's maybe obvious, but you'll work in the similar conditions it might help.
+It's how our trials look like:
+
+![hello](/assets/images/robotics-and-uav-projects-cold-weather/hello.jpg)
+
+I've decided to mention in this article the list of possible problems and advice how to avoid or mitigate it. Maybe I'll update this post if there are will be more. I understand that it could be obvious, but if you will work in the similar conditions it might help you.
 
 ## Hardware
 
@@ -51,4 +55,4 @@ Do not forget about humans. If you want to test your code on a battlefield, it w
 * **Gaiters**. the essential thing when you walking through snowbank. It defends you shoes from snow, event if you are staying knee-deep in a snowbank. You can [do it yourself](https://www.survivalkit.com/blog/diy-simple-but-very-effective-hiking-gaiters/) or just it buy somewhere, like [here](https://www.berghaus.com/on/demandware.store/Sites-brggbgbp-Site/en_MU/GeoShow-Product?pid=433091)
 * **Gore-Tex boots**. I've personally tried different types of, but boots with [Gore-Tex](https://en.wikipedia.org/wiki/Gore-Tex) were the best one. I've also tried **insulated workboots**, like from the store that I've mentioned above under insulated workwear point, but they have several unpleasant problems. The most important one is that your boots should "breeze" and your food shouldn't sweat, and not all workboots can provide it.
 * **Car with independent heater** is another significant option. If you don't have a shelter, but you have a commodious car, you can us something like [this](http://www.branoslovakia.sk/en/index.php?id=30). We've used it inside [UAZ Patriot](https://uaz.global/cars/suv/upgraded-patriot) and it often saves my fingers and toes from frostbite.
-* **Laptop with plastic chassis**. I use [ASUS ZenBook 13 UX331UN](https://www.asus.com/us/Laptops/ASUS-ZenBook-13-UX331UN/) and it's fairly good, but it has nasty property -- metal chassis. Why does it suck? Because it became very-very cold under frost and starts to freeze you hands and thighs. So I recommend to use laptops made from plastic rather than metal.
+* **Laptop with plastic chassis**. I use [ASUS ZenBook 13 UX331UN](https://www.asus.com/us/Laptops/ASUS-ZenBook-13-UX331UN/) and it's fairly good laptop, but it has nasty property -- metal chassis. Why does it suck? Because it became very-very cold under frost and also starts to freeze you hands and thighs. So I recommend to use laptops made from plastic rather than metal. For example, [Lenovo ThinkPad X1 Carbon](https://www.lenovo.com/us/en/laptops/thinkpad/thinkpad-x/ThinkPad-X1-Carbon-6th-Gen/p/22TP2TXX16G) can be a better choice.
