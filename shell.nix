@@ -7,6 +7,8 @@ let
 
   utils = with pkgs; [
       bundix
+      pngquant
+      imagemagick
   ];
 
 
