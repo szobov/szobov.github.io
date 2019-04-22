@@ -2,16 +2,15 @@
 layout: post
 title: Be careful of using smart pointers and async code (C++)
 categories:
-- blog
+- software
 tags:
 - c++
 - shared_ptr
 - boost::asio
 ---
 
-# {{ page.title }}
-
-### Background
+* content
+{:toc}
 
 One day I've spent some time to debug very odd **sigfault**, that was caused by careless using of `std::shared_ptr` and `boost::asio`'s callbacks. It was easy to fix, but difficult to find the root of a problem. Here is a small advice, how you can avoid this mistake.
 

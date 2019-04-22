@@ -1,6 +1,57 @@
-# General Jekyll Config
-markdown: kramdown
-highlighter: rouge
-url: http://szobov.github.io
-lsi: false
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock, shell.nix, gemset.nix]
+
+# Site settings
+title: Sergei Zobov
+brief-intro: Software and robotics engineer
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://szobov.github.io" # the base hostname & protocol for your site
+
+permalink: /:year/:month/:day/:title/
+
+# other links
+social:
+  name: Sergei Zobov
+  github:  szobov
+  gitlab:  szobov
+  linkedin: szobov_dev
+  telegram: szobov
+  twitter:
+  facebook:
+  email:
+
+page_config:
+  show_similar: false
+
+# comments
+# two ways to comment, only choose one, and use your own short name
+comments:
+  enabled: false
+  # disqus_shortname: 
+
+# Build settings
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# port
+# port: 1234
+
+# url
+category_dir: category/
+tag_dir: tag/
+
+# excerpt
+# excerpt_separator: "\n\n\n\n"
+
+# paginate
+plugins: [jekyll-paginate]
+paginate: 10

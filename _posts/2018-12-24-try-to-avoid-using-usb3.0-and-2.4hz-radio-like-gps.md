@@ -2,7 +2,7 @@
 layout: post
 title: Difficulties of using USB3.0 and 2.4 GHz radio devices
 categories:
-- blog
+- hardware
 tags:
 - usb3.0
 - radio
@@ -10,9 +10,8 @@ tags:
 - drones
 ---
 
-# {{ page.title }}
-
-## tl;dr;
+* content
+{:toc}
 
 Try to avoid using USB3.0 connected devices, like storage or camera, with any radio devices working on 2.4 GHz frequencies closely, even though you are using a shield on USB3.0 cable and connector. In opposite case you can get extremely unpredictable behaviour, like GPS with very highly noised output.
 Especially if the devices located in small space like on the drone.
@@ -34,12 +33,12 @@ We've spent the evening on investigating this problem and found several resource
 
 Also I've tested dependence of GPS noise and USB3.0/USB2.0 cables. The test was made in the our laboratory in indoor environment, but it can be noticed with naked eyes how sharply increase the value of several parameters on GPS receiver output. Below screenshots of [MAVLink inspector from QGroundControl](https://docs.qgroundcontrol.com/en/app_menu/mavlink_inspector.html) and I've marked more interesting values:
 
-![comparison](/assets/images/try-to-avoid-using-usb3-and-2.4hz-radio-like-gps/usb3.0-usb2.0-comparison.png)
+![comparison]( {{ "/assets/images/try-to-avoid-using-usb3-and-2.4hz-radio-like-gps/usb3.0-usb2.0-comparison.png" | prepend: site.baseurl }})
 As you can see, here is very noticeable difference in values when data transmitted through USB3.0 cable from camera. And almost no difference when using USB2.0 cable, only some parameters, like altitude, but it's normal when test it indoor.
 
 How devices and cable located on the real copter:
 
-![How it's located on the drone](/assets/images/try-to-avoid-using-usb3-and-2.4hz-radio-like-gps/usb3.0-gps-location.png)
+![How it's located on the drone]( {{ "/assets/images/try-to-avoid-using-usb3-and-2.4hz-radio-like-gps/usb3.0-gps-location.png" | prepend: site.baseurl }})
 
 ## Conclusion
 

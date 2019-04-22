@@ -2,17 +2,20 @@
 layout: post
 title: Human-readable protobuf -- text and JSON formats.
 categories:
-- blog
+- utilities
 tags:
 - protobuf
 - c++
 - JSON
 ---
 
-# {{ page.title }}
+* content
+{:toc}
 
 This article can be interesting for you if you use or plan to use [protobuf](https://github.com/protocolbuffers/protobuf).
 **Protobuf** is a binary format and it's wonderful, but sometimes we need something more readable, and **protobuf** can give it to us with [text](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.text_format) or [JSON](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.util.json_util) formats.
+
+## Example
 
 For example we have a messages definition `message.proto`, like this:
 ```protobuf
