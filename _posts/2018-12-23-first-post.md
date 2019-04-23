@@ -7,9 +7,8 @@ tags:
 - blog
 ---
 
-# {{ page.title }}
-
-## Small note
+* content
+{:toc}
 
 Hey, I've decided to start write my own blog. As many people, I'll use it as my dairy to save a pieces of my experience. Maybe someone can find here something useful and interesting.
 

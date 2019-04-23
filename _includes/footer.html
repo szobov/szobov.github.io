@@ -1,12 +1,44 @@
-<div class="disclaimer">
-  {% if site.data.theme.show_disclaimer %}
-  <p>
-    The postings on this site are my own and don't necessarily represent my
-    employer’s positions, strategies or opinions.
-  </p>
-  {% endif %}
+<footer class="site-footer">
 
-  <p>
-      © {{ site.data.theme.name }}, {{ 'now' | date: "%Y" }} &mdash; built with <a href="http://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/swanson/lagom">Lagom theme</a>
-  </p>
-</div>
+
+    <div class="wrapper">
+
+        {% if site.social.name %}
+        <p class="description">
+            {{site.social.name}}, {{ 'now' | date: "%Y" }}
+        </p>
+        {% endif %}
+        <p class="contact">
+            Contact me at:
+            {% if site.social.github %}
+            <a href="https://github.com/{{site.social.github}}" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.social.gitlab %}
+            <a href="https://gitlab.com/{{site.social.gitlab}}" title="Gitlab"><i class="fa fa-gitlab" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.social.linkedin %}
+            <a href="https://www.linkedin.com/in/{{site.social.linkedin}}" title="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.social.telegram %}
+            <a href="https://t.me/{{site.social.telegram}}" title="Telegram"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.social.email %}
+            <a href="mailto:{{site.social.email}}" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.social.twitter %}
+            <a href="https://twitter.com/{{site.social.twitter}}" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.social.facebook %}
+            <a href="https://www.facebook.com/{{site.social.facebook}}" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+            {% endif %}
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a href="https://github.com/Gaohaoyang">HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>

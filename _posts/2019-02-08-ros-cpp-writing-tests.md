@@ -2,7 +2,7 @@
 layout: post
 title: Example of writing C++ tests in ROS (Kinetic)
 categories:
-- blog
+- testing
 tags:
 - ros
 - c++
@@ -11,16 +11,15 @@ tags:
 - rostest
 ---
 
-# {{ page.title }}
-
-### Background
+* content
+{:toc}
 
 > Untested Code is Broken Code
 
 Half year ago I wrote my first ROS C++ code. Along with it, I've started to look into documentation to find how to test my code. Unfortunately, I've found several resources, but all of them didn't provide a good example of what should I actually do to make my test work well with ROS. Plus I wanted my test to show debug output if I need it.
 Here is a small boilerplate that you can use to cover your code with tests and take the advantages that I've mentioned above. Also I'll provide you an example of how you can run your tests.
 
-### Environment
+## Environment
 
 My current environment:
 * Ubuntu 16.04
@@ -28,7 +27,7 @@ My current environment:
 * [ROS Kinetic](https://wiki.ros.org/kinetic/Installation/Ubuntu)
 * [googletest v1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1)
 
-### Directory structure
+## Directory structure
 
 Typical ROS package directory:
 ```
@@ -43,7 +42,7 @@ Typical ROS package directory:
     └── source_test.launch
 ```
 
-### CMakeList.txt
+## CMakeList.txt
 
 ```cmake
 <build instructions for your package is here>
@@ -64,7 +63,9 @@ if (CATKIN_ENABLE_TESTING)
     )
 endif()
 ```
-### Launch file `test/source_test.launch`
+## Launch file
+
+`test/source_test.launch`
 
 It's very useful to write `ROSCONSOLE_FROMAT` to make log-messages in your code prettier. Also it's better do not write long test and limit it with the argument `time-limit`.
 
@@ -86,7 +87,9 @@ If you want to divide tests in the launch file you can add `gtest_filter` to the
 ```
 
 
-### Test file `test/source_test.cpp`
+## Test file
+
+`test/source_test.cpp`
 
 ```cpp
 #include <ros/ros.h>
@@ -136,7 +139,7 @@ int main(int argc, char **argv)
 }
 
 ```
-### Run tests
+## Run tests
 
 ```shell
 # Build package and run tests. But it will show output only for log-messages with ERROR level.
