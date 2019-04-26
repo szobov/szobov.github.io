@@ -9,7 +9,7 @@ tags:
 - robots
 - uav
 - drones
-- low temperature
+- weather
 - people
 ---
 
