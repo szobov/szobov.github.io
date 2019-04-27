@@ -17,9 +17,9 @@ tags:
 {:toc}
 
 As I've mentioned in the previous [article]({% post_url 2018-12-24-try-to-avoid-using-usb3.0-and-2.4hz-radio-like-gps %}), my team works on UAV project. From time to time we are doing the trials of our code and robots on a wild nature.
-Because of our company located on a north of Russia, in a quite cold climatic zone, we often have a different problems, related to extreme weather condition.
+Because of our company is located in the north part of Russia, in a quite cold climatic zone, we often have a different problems, related to extreme weather condition.
 
-So, I've decided to mention in this article the list of possible problems and advice how to avoid or mitigate it. I'll update this post if there are will be more. I understand that it could be obvious, but if you will work in the similar conditions it might help you.
+So, in this article I've decided to mention the list of possible problems and advice how to avoid or mitigate it. I'll update this post if there are will be more information. I understand that it could be obvious, but if you will work in the similar conditions it might help you.
 
 Just to show you an example, it's me on one of our winter trials:
 
@@ -38,21 +38,21 @@ I don't want to spend too much time on showing up, so let's start.
 
 Unfortunately, not all hardware is ready to work in such extreme conditions. For example, the onboard computers, like [ODROID-XU4](https://forum.odroid.com/viewtopic.php?t=20864) by specification can operate only in a range **0°**..**+70°C**. For [Raspberry Pi 3 Model B+](https://static.raspberrypi.org/files/product-briefs/Raspberry-Pi-Model-Bplus-Product-Brief.pdf) it's **0°**..**+50°C**. There are some onboard computers that can work at sub-zero, like [NVIDIA Jetson AGX Xavier](https://devblogs.nvidia.com/nvidia-jetson-agx-xavier-32-teraops-ai-robotics/) **-25°**..**+80°C**, or [Arrow BeagleBone Black](Arrow BeagleBone Black) **-40°**..**+80°C**.
 
-The same problem with the cameras, for example [oCam-1MGN-U Plus](https://www.hardkernel.com/shop/ocam-1mgn-u-plus-1mp-usb3-0-mono-global-shutter/) according to specification can operate only in a range **0°C** .. **+70°C**. But actually we've done the thermal tests and it can work as expected at temperature about **-20°C**.
+The same problem with the cameras, for example [oCam-1MGN-U Plus](https://www.hardkernel.com/shop/ocam-1mgn-u-plus-1mp-usb3-0-mono-global-shutter/) can operate only in a range **0°C** .. **+70°C** according to specification. But actually we've done the thermal tests and it can work as expected at temperature about **-20°C**.
 
 The situation is better with an autopilot hardware. For the autopilot that we are using, [Holybro Pixhawk 4](https://docs.px4.io/en/flight_controller/pixhawk4.html), it's **-40°**..**+85°C**. This range also the same for [Navio2](https://store.emlid.com/product/navio2/). Unfortunately, for [DJI NAZA-M V2](https://www.dji.com/naza-m-v2/spec_v1-doc) it's just **-10°**..**+50°C**.
 
-As you can noticed, it's a big deal to choose right devices for your project, especially if your robots will work in a bad conditions. Why I think it's important? Because the consequences can be very unpleasant in debugging and mitigation. Much more easier to debug the problem in your code than understanding whats going on with hardware, for example your camera and why it suddenly stops to working without any visible problem.
+As you may noticed, it's a big deal to choose right devices for your project, especially if your robots will work in a bad conditions. Why I think it's important? Because the consequences can be very unpleasant in debugging and mitigation. Much more easier to debug the problem in your code than understanding whats going on with hardware, for example your camera and why it suddenly stops to working without any visible problem.
 
-It would be better to test your devices indoor, before let them fly outside. It's quite easy, just put your devices connected and tuned on into a freezer and wait. If it's still work when temperature went down, so it likely will work outside under the same temperature.
+It would be better to test your devices indoor, before let them fly outside. It's quite easy, just put your devices connected and tuned on into a freezer and wait. If it still works when temperature went down, so it will likely work outside under the same temperature.
 
-Also you can provide an additional heating. For example, if you have a big accumulator, it'll heat up under load. So, you can put your hardware somewhere near the battery and check, maybe it's enough to maintain operable temperature.
+You can also provide an additional heating. For example, if you have a big accumulator, it'll heat up under load. So, you can put your hardware somewhere near the battery and check, maybe it's enough to maintain operable temperature.
 
 If your system will work fully automatically, you can check the temperature before starting any actions and if it's unacceptable weather condition outside, just keep your robot in a safe place and do not let it crash. To get the information about the weather you can use web api, like [Dark Sky API](https://darksky.net/dev), buy your own station, like [Vantage Vue](https://www.davisinstruments.com/solution/vantage-vue/), or [make it yourself](https://www.instructables.com/id/Complete-DIY-Raspberry-Pi-Weather-Station-with-Sof/).
 
 ### Water
 
-Let's imagine wet snow... Mmmm, not my favorite weather. The raindrops drain through you jacket, cover your face and hands, very nasty feelings. The same for robots.
+Let's imagine wet snow... Mmmm, not my favorite weather. The raindrops drain through you jacket, cover your face and hands, very nasty feelings. Same for robots.
 It's not only about winter, but keep in mind: you have to make your drone waterproofed, at least most important parts, because water will find a way to break your hardware.
 
 On one of trial we wrapped up our copter with sellotape in order to provide waterproofed protection, but it wasn't good idea. This day copter dramatically fell down, because of camera suddenly shutdown. A snowbank was a good place to fall.
