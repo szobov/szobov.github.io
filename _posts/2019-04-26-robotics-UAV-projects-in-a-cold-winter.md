@@ -25,7 +25,7 @@ Just to show you an example, it's me on one of our winter trials:
 
 ![hello](/assets/images/robotics-and-uav-projects-cold-weather/hello.jpg)
 
-And where we are usually working:
+And where we are working:
 
 ![tumba](/assets/images/robotics-and-uav-projects-cold-weather/tumba.jpg)
 
@@ -42,7 +42,7 @@ The same problem with the cameras, for example [oCam-1MGN-U Plus](https://www.ha
 
 The situation is better with an autopilot hardware. For the autopilot that we are using, [Holybro Pixhawk 4](https://docs.px4.io/en/flight_controller/pixhawk4.html), it's **-40°**..**+85°C**. This range also the same for [Navio2](https://store.emlid.com/product/navio2/). Unfortunately, for [DJI NAZA-M V2](https://www.dji.com/naza-m-v2/spec_v1-doc) it's just **-10°**..**+50°C**.
 
-As you may noticed, it's a big deal to choose right devices for your project, especially if your robots will work in a bad conditions. Why I think it's important? Because the consequences can be very unpleasant in debugging and mitigation. Much more easier to debug the problem in your code than understanding whats going on with hardware, for example your camera and why it suddenly stops to working without any visible problem.
+As you may noticed, it's a big deal to choose right devices for your project, especially if your robots will work in a bad conditions. Why I think it's important? Because the consequences can be very unpleasant in debugging and mitigation. Much more easier to debug the problem in your code than understand whats going on with hardware, for example your camera and why it suddenly stops to working without any visible problem.
 
 It would be better to test your devices indoor, before let them fly outside. It's quite easy, just put your devices connected and tuned on into a freezer and wait. If it still works when temperature went down, so it will likely work outside under the same temperature.
 
@@ -52,25 +52,25 @@ If your system will work fully automatically, you can check the temperature befo
 
 ### Water
 
-Let's imagine wet snow... Mmmm, not my favorite weather. The raindrops drain through you jacket, cover your face and hands, very nasty feelings. Same for robots.
-It's not only about winter, but keep in mind: you have to make your drone waterproofed, at least most important parts, because water will find a way to break your hardware.
+Let's imagine the wet snow... Mmmm, not my favorite weather. The raindrops drain through your jacket, cover your face and hands, very nasty feelings. Same for robots.
+It's not only about winter, but keep in mind: you have to make your drone waterproofed, at least the most important parts, because water will find a way to break your hardware.
 
-On one of trial we wrapped up our copter with sellotape in order to provide waterproofed protection, but it wasn't good idea. This day copter dramatically fell down, because of camera suddenly shutdown. A snowbank was a good place to fall.
+On one of trials we wrapped up our copter with sellotape in order to provide waterproofed protection, but it wasn't a good idea. This day copter dramatically fell down, because of camera suddenly shutdown. A snowbank was a good place to fall.
 ![wet_tbs](/assets/images/robotics-and-uav-projects-cold-weather/wet_tbs.jpg)
 
-One of the chip but useful solution could be plastic coverage for drone, some thing [like this](https://www.ebay.ie/itm/201379747797) for *TBS Discovery*.
+One of the chip but useful solutions could be plastic coverage for drone, some thing [like this](https://www.ebay.ie/itm/201379747797) for *TBS Discovery*.
 
 ![coverage](/assets/images/robotics-and-uav-projects-cold-weather/tbs-cover.jpg)
 
-Or you can find or 3D print your own case, [like this for ODROID XU4](https://www.thingiverse.com/thing:3225094). it ain't not much, but it's honest work.
+Or you can find or 3D print your own case, [like this for ODROID XU4](https://www.thingiverse.com/thing:3225094). it ain't much, but it's honest work.
 
 Also, snow can be a huge problem for visual navigation. For example, [detection of ArUco markers](https://docs.opencv.org/4.0.0/d5/dae/tutorial_aruco_detection.html) by camera will work bad or doesn't work at all in heavy snow condition. I suppose, solution, that relies on infrared emission, like [MarkOne Beacon](https://irlock.com/products/markone-beacon-v2-0) could also work unsafe.
 
 ## People
 
 Do not forget about humans. If you want to test your robot on a battlefield, it would be better to buy suitable equipment for you:
-* **Insulated workwear**. Quite comfortable and practical, because it's been designed to protect people, that would work, for example, near to North Pole. Also it has great utilities, like unfastening back part of the pants, and trust me you'll be happy to have it. You can find this kind of clothes in special shops, like in [this one](https://en.vostok.ru/catalog/).
-* **Gaiters**. The essential thing when you walking through snowbank. It defends you shoes from snow, even if you are staying knee-deep in a snowbank. You can [do it yourself](https://www.survivalkit.com/blog/diy-simple-but-very-effective-hiking-gaiters/) or just buy it somewhere, like [here](https://www.berghaus.com/on/demandware.store/Sites-brggbgbp-Site/en_MU/GeoShow-Product?pid=433091).
+* **Insulated workwear**. Quite comfortable and practical, because it's been designed to protect people, that would work near to North Pole. Also it has great utilities, like unfastening back part of the pants, and trust me you'll be happy to have it. You can find this kind of clothes in special shops, like in [this one](https://en.vostok.ru/catalog/).
+* **Gaiters**. The essential thing when you walking through snowbank. It defends your shoes from snow, even if you are staying knee-deep in a snowbank. You can [do it yourself](https://www.survivalkit.com/blog/diy-simple-but-very-effective-hiking-gaiters/) or just buy it somewhere, like [here](https://www.berghaus.com/on/demandware.store/Sites-brggbgbp-Site/en_MU/GeoShow-Product?pid=433091).
 * **Gore-Tex boots**. I've personally tried different types of, but boots with [Gore-Tex](https://en.wikipedia.org/wiki/Gore-Tex) were the best one. I've also tried **insulated workboots**, like from the store that I've mentioned above in **insulated workwear** section, but they have several unpleasant drawbacks. The most important one is that your boots should "breeze" and your foot shouldn't sweat, but not all workboots can provide this feature.
 * **Car with independent heater**. Another significant option. If you don't have a dry and warm shelter, but you have a commodious car, you can use something like [this](http://www.branoslovakia.sk/en/index.php?id=30). We've used it inside [UAZ Patriot](https://uaz.global/cars/suv/upgraded-patriot) and it often saves my fingers and toes from frostbite. ![car_and_chair](/assets/images/robotics-and-uav-projects-cold-weather/car_and_chair.jpg)
 * **Laptop with plastic chassis**. I use [ASUS ZenBook 13 UX331UN](https://www.asus.com/us/Laptops/ASUS-ZenBook-13-UX331UN/) and it's fairly good laptop, but it has nasty property -- metal chassis. Why does it suck? Because it became very-very cold under frost and also starts to freeze you hands and thighs. I recommend to use laptops made from plastic rather than metal. For example, [Lenovo ThinkPad X1 Carbon](https://www.lenovo.com/us/en/laptops/thinkpad/thinkpad-x/ThinkPad-X1-Carbon-6th-Gen/p/22TP2TXX16G) can be a better choice.
