@@ -36,7 +36,7 @@ I don't want to spend too much time on showing up, so let's start.
 
 ### Low temperature
 
-Unfortunately, not all hardware is ready to work in such extreme conditions. For example, the onboard computers, like [ODROID-XU4](https://forum.odroid.com/viewtopic.php?t=20864) by specification can operate only in a range **0°**..**+70°C**. For [Raspberry Pi 3 Model B+](https://static.raspberrypi.org/files/product-briefs/Raspberry-Pi-Model-Bplus-Product-Brief.pdf) it's **0°**..**+50°C**. There are some onboard computers that can work at sub-zero, like [NVIDIA Jetson AGX Xavier](https://devblogs.nvidia.com/nvidia-jetson-agx-xavier-32-teraops-ai-robotics/) **-25°**..**+80°C**, or [Arrow BeagleBone Black](Arrow BeagleBone Black) **-40°**..**+80°C**.
+Unfortunately, not all hardware is ready to work in such extreme conditions. For example, the onboard computers, like [ODROID-XU4](https://forum.odroid.com/viewtopic.php?t=20864) by specification can operate only in a range **0°**..**+70°C**. For [Raspberry Pi 3 Model B+](https://static.raspberrypi.org/files/product-briefs/Raspberry-Pi-Model-Bplus-Product-Brief.pdf) it's **0°**..**+50°C**. There are some onboard computers that can work at sub-zero, like [NVIDIA Jetson AGX Xavier](https://devblogs.nvidia.com/nvidia-jetson-agx-xavier-32-teraops-ai-robotics/) **-25°**..**+80°C**, or [Arrow BeagleBone Black](https://beagleboard.org/black) **-40°**..**+80°C**.
 
 The same problem with the cameras, for example [oCam-1MGN-U Plus](https://www.hardkernel.com/shop/ocam-1mgn-u-plus-1mp-usb3-0-mono-global-shutter/) can operate only in a range **0°C** .. **+70°C** according to specification. But actually we've done the thermal tests and it can work as expected at temperature about **-20°C**.
 
