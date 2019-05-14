@@ -42,6 +42,14 @@
     };
     version = "1.1.0";
   };
+  colorize = {
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "133rqj85n400qk6g3dhf2bmfws34mak1wqihvh3bgy9jhajw580b";
+      type = "gem";
+    };
+    version = "0.8.1";
+  };
   commonmarker = {
     dependencies = ["ruby-enum"];
     source = {
@@ -161,6 +169,15 @@
       type = "gem";
     };
     version = "2.9.1";
+  };
+  html-proofer = {
+    dependencies = ["activesupport" "addressable" "colorize" "mercenary" "nokogiri" "parallel" "typhoeus" "yell"];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "0qwy5cdl5l6rl9cqpcydl4126rwv1f4l9ixf3z6j2rdy979l2jaf";
+      type = "gem";
+    };
+    version = "3.10.2";
   };
   "http_parser.rb" = {
     source = {
@@ -585,6 +602,14 @@
     };
     version = "4.13.0";
   };
+  parallel = {
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "1x1gzgjrdlkm1aw0hfpyphsxcx90qgs3y4gmp9km3dvf4hc4qm8r";
+      type = "gem";
+    };
+    version = "1.17.0";
+  };
   pathutil = {
     dependencies = ["forwardable-extended"];
     source = {
@@ -729,5 +754,13 @@
       type = "gem";
     };
     version = "1.4.1";
+  };
+  yell = {
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "161kfwyv7aq983m2gd90c67sqcs0p1z6nhjall2mdr7iz0gqf9wn";
+      type = "gem";
+    };
+    version = "2.1.0";
   };
 }
