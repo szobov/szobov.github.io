@@ -2,7 +2,7 @@
 
 SOURCE="$(readlink -f ${1})"
 SIZE="${2:-900x700}"
-OUTPUT="${3:-output_${SOURCE}}"
+OUTPUT="${3:-${SOURCE}_out}"
 
 if ! test -f "${SOURCE}"; then
 	  echo "usage: $0 [source_file] [new_size] [output]"
