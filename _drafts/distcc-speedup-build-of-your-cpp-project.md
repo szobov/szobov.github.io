@@ -6,7 +6,8 @@ categories:
 tags:
 - c++
 - build
-- distributed build
+- distributed
+- build
 ---
 
 # {{ page.title }}
