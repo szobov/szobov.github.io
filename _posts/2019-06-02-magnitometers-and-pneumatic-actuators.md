@@ -2,7 +2,7 @@
 layout: post
 title: The problem of using pneumatic actuators and magnitometers
 categories:
-- blog
+- hardware
 tags:
 - pneumatic
 - magnet
