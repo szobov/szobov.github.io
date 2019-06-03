@@ -2,7 +2,7 @@
 layout: post
 title: distcc -- speedup the build of your C++ project
 categories:
-- blog
+- software
 tags:
 - c++
 - build

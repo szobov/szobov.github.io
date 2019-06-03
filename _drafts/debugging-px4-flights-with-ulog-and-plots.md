@@ -2,7 +2,7 @@
 layout: post
 title: Debugging px4 flights with ulog and plots
 categories:
-- blog
+- software
 tags:
 - debugging
 - UAV

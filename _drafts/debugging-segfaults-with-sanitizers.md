@@ -2,7 +2,7 @@
 layout: post
 title: Debugging segfaults in C++ code with sanitizers
 categories:
-- blog
+- software
 tags:
 - c++
 - debugging
