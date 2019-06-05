@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The problem of using pneumatic actuators and magnitometers
+title: The problem of using pneumatic actuators and magnetometers
 categories:
 - hardware
 tags:
@@ -16,6 +16,11 @@ tags:
 {:toc}
 
 My current project contains not only a flying drone, but also a special drone's house, where the drone is living. Actually, it's a ground station, an enclosure or just a big box, which also contains the different kinds of hardware. Significant part of this hardware is the **pneumatic actuators**, like this [festo's devices](https://www.festo.com/cat/en-us_us/products_010200). This sort of actuators are pretty well, but we've bought some of them, that used magnets to detect the position of the actuator... Bought lots of them and that wasn't a brilliant idea.
+
+The actuator that opens a door:
+![tumba](/assets/images/magnetometers-and-pneumatic-actuators/pneumo-actuator.jpg)
+
+### Problem
 
 One day we've decided to check our drone with its new shiny house, but the first flight shown, that we are in a big trouble: [yaw angle](https://en.wikipedia.org/wiki/Yaw_(rotation))(heading) inside and outside the box has about **20 deg** difference. Absolutely unacceptable, because we are sending controlling signal (in our case velocity vector) to the drone in a [local tangent plane coordinates](https://en.wikipedia.org/wiki/Local_tangent_plane_coordinates), that means we can't flying in the so unstable conditions.
 
