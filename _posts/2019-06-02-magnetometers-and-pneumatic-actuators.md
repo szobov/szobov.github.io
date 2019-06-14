@@ -18,7 +18,7 @@ tags:
 My current project contains not only a flying drone, but also a special drone's house, where the drone is living. Actually, it's a ground station, an enclosure or just a big box, which also contains the different kinds of hardware. Significant part of this hardware is the **pneumatic actuators**, like this [festo's devices](https://www.festo.com/cat/en-us_us/products_010200). This sort of actuators are pretty well, but we've bought some of them, that used magnets to detect the position of the actuator... Bought lots of them and that wasn't a brilliant idea.
 
 The actuator that opens a door:
-![tumba](/assets/images/magnetometers-and-pneumatic-actuators/pneumo-actuator.jpg)
+![pneumo-actuator](/assets/images/magnetometers-and-pneumatic-actuators/pneumo-actuator.jpg)
 
 ### Problem
 
