@@ -48,12 +48,28 @@ With several tests, I've found that an acceptable illumination with about (#TODO
 
 ## IMU as a source of angles
 
-The [IMU](https://en.wikipedia.org/wiki/Inertial_measurement_unit) of our [flight controller](https://docs.px4.io/en/flight_controller/pixhawk-2.html) can give to us a very precise value of [rotation quaternion](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation). But wait, the output of [solvePnP](https://docs.opencv.org/3.4.6/d9/d0c/group__calib3d.html#ga549c2075fac14829ff4a58bc931c033d) is rotation and the translation vectors. What if we'll use the rotation angles from IMU, but translation from `solvePnP`? Actually, the estimations of translation vector by `solvePnP` is more precisely, then rotation, that means if we will use more accurate source of rotation angles, we will get better working system. Additionally, we can use a smaller resolution of an image, enough to estimate the translation fairly, and score in the performance. We've tested this solution and it works really well: very precise positioning without severe deviations. Just what we want, but...
+The [IMU](https://en.wikipedia.org/wiki/Inertial_measurement_unit) of our [flight controller](https://docs.px4.io/en/flight_controller/pixhawk-2.html) can gives a very precise value of [rotation quaternion](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation). But wait, the output of [solvePnP](https://docs.opencv.org/3.4.6/d9/d0c/group__calib3d.html#ga549c2075fac14829ff4a58bc931c033d) is the rotation and the translation vectors. What if we'll use the rotation angles from IMU, but the translation from `solvePnP`? Actually, the estimations of the translation vector by `solvePnP` is more precise, then rotation, that means if we will use more accurate source of rotation angles, we will get better working system. Additionally, we can use a smaller resolution of an image, enough to estimate the translation fairly, and score in the performance.
+To be clear, we've used the `pose.orientation` from [/local_position/pose](http://wiki.ros.org/mavros#mavros.2BAC8-Plugins.local_position) topic, and then converted it to Euler angles (it's easy to deal with and more understandable for humans). After it, you can make the [tf2::Transform](http://docs.ros.org/jade/api/geometry_msgs/html/msg/Transform.html) and use it everywhere you want in your ROS code.
+We've tested this solution and it works really well: very precise positioning without severe deviations. Just what we want, but...
 
 ## Magnets: strikes back
 
-In my [previous article]({% post_url 2019-06-02-magnetometers-and-pneumatic-actuators %})
+In my [previous article]({% post_url 2019-06-02-magnetometers-and-pneumatic-actuators %}) I've mentioned that one day we've discovered a very hard magnetic interference inside our automated ground station. Yes, that breaks all our plans, because since this moment we can use the **yaw angle** from IMU. Is it a Time to return to the Stone Age or we can do something to make our visual position estimation robust and precise again?
 
-* Effect of corner refining
+## Game of parameters
+
+That was a time, when I took my laptop and went to our laboratory to find a solution. We didn't want to use a bigger resolution due to it hurts the performance, but we had to fix the accuracy.
+I've started to rereading a documentation and looking on our algorithm. We had two players: `aruco::detectMarkers` and `cv::solvePnP`. It didn't take too much time to find, that `cv::solvePnP` is doing it's job quite well, but `aruco::detectMarkers` is not. Because of binning, illumination and focus, it was difficult for `detectMarkers` to recognize contours of markers. I've found that this method has [lots of parameters](https://docs.opencv.org/3.4.1/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html) and I didn't want to choose it manually. Also with several experiments I've noticed, that most important parameters is:
+* `adaptiveThreshWinSizeMax`
+* `adaptiveThreshWinSizeMin`
+* `adaptiveThreshWinSizeStep`
+* `cornerRefinementMethod`
+* `cornerRefinementWinSize`
+* `cornerRefinementMinAccuracy`
+
+Too many parameters to find with brute force, unfortunately. But we can use the same value for `adaptiveThreshWinSizeMax` and `adaptiveThreshWinSizeMin`, because we just want to find the best window. That means that we can rid of `adaptiveThreshWinSizeStep`. We also can set a small value for `cornerRefinementMinAccuracy` and after check it's effect visually. The value of `cornerRefinementMethod` was also chosen as `CORNER_REFINE_CONTOUR` because it was more stable than `CORNER_REFINE_NONE` and `CORNER_REFINE_SUBPIX`.
+So, after this inspection left only two mutable parameters: `adaptiveThreshWinSize` and `cornerRefinementWinSize`.
+I wrote small piece of code, that went through parameters, sent it to another service, that combine it to `csv`. After I've put the camera on fixed place, turned on the light and went out to do something else. After several hours, I've 
+
 * Table of std and parameters
 * Conclusion
