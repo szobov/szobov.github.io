@@ -1,6 +1,6 @@
 ---
 layout: post
-title: oDroid XU4 low energy CPU cores: backstabbing
+title: oDroid XU4 low energy CPU cores -- backstabbing
 categories:
 - hardware
 tags:
