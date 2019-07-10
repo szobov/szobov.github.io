@@ -69,7 +69,9 @@ I've started to rereading a documentation and looking on our algorithm. We had t
 
 Too many parameters to find with brute force, unfortunately. But we can use the same value for `adaptiveThreshWinSizeMax` and `adaptiveThreshWinSizeMin`, because we just want to find the best window. That means that we can rid of `adaptiveThreshWinSizeStep`. We also can set a small value for `cornerRefinementMinAccuracy` and after check it's effect visually. The value of `cornerRefinementMethod` was also chosen as `CORNER_REFINE_CONTOUR` because it was more stable than `CORNER_REFINE_NONE` and `CORNER_REFINE_SUBPIX`.
 So, after this inspection left only two mutable parameters: `adaptiveThreshWinSize` and `cornerRefinementWinSize`.
-I wrote small piece of code, that went through parameters, sent it to another service, that combine it to `csv`. After I've put the camera on fixed place, turned on the light and went out to do something else. After several hours, I've 
+I wrote small piece of code, that went through parameters, sent it to another service, that calculated [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) and combined it to `csv` file. After I've put the camera on fixed place, turned on the light and went out to do something else. After several hours the report was done.
 
-* Table of std and parameters
+[Here is](https://docs.google.com/spreadsheets/d/1EDb3lZr4qxF3SI_sTS4PJj2DlKOLGCD5HGJkCgIwjaA/edit?usp=sharing) two of several reports, that I've created. I'm not so good in math, so I just took a standard deviation of position and yaw angle, normalized it (unfortunately, you can't just sum degrees with meters :(((() and looked on a top10.
+Long story short, I chosen this values: `adaptiveThreshWinSizeMin=5, adaptiveThreshWinSizeMax=5, adaptiveThreshWinSizeStep=100, cornerRefinementWinSize=10, cornerRefinementMinAccuracy=0.001, cornerRefinementMaxIterations=50`. I'm not sure, that it's a best one, but tests in a real world show, that it works quite well and better than it was.
+
 * Conclusion
