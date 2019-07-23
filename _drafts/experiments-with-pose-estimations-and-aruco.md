@@ -15,16 +15,16 @@ tags:
 
 ## What am I talking about?
 
-If your robot will move in the conditions, where a using of GPS is almost impossible, e.g. inside buildings, you need to have spare source of pose estimation. One of the cheap and proven solution is pose estimation with a [calibrated camera]({% post_url 2019-05-19-camera-calibration-with-ros %}) and printed markers, like [AprilTags](https://github.com/AprilRobotics/apriltag) or [ArUco](https://docs.opencv.org/3.1.0/d5/dae/tutorial_aruco_detection.html) markers. The second variant of markers we are using in our project. After a long road of different experiments, now we take **5-10 centimeters precision** with a distance of **6-7 meters**. Also we have quite acceptable framerate, about **50 fps**.
+If your robot will move in the conditions, where a using of GPS is almost impossible, e.g. inside the buildings or the enclosures, you need to have a spare source of a pose estimation. One of the cheap and proven solution is the pose estimation with a [calibrated camera]({% post_url 2019-05-19-camera-calibration-with-ros %}) and the printed markers, like [AprilTags](https://github.com/AprilRobotics/apriltag) or [ArUco](https://docs.opencv.org/3.1.0/d5/dae/tutorial_aruco_detection.html) markers. The second type of markers (**ArUco**) we are using in our project. And it takes some time, but after a long journey with the different experiments, now we have **5-10 centimeters precision** with a distance of **6-7 meters**. With this precision we've also reached a quite acceptable framerate, about **50 fps**.
 
-I've decided to mention in this article several important notes, that I got, while developed this system of visual positioning.
+I've decided to mention in this article several important notes, that I've got, while developed this system of visual positioning.
 All of this notes related to [OpenCV 3.4](https://docs.opencv.org/3.4.6/d9/d6a/group__aruco.html). All benchmarks has been made on [ODROID-XU4](https://forum.odroid.com/viewtopic.php?t=20864) and using [oCam-1MGN-U Plus](https://www.hardkernel.com/shop/ocam-1mgn-u-plus-1mp-usb3-0-mono-global-shutter/).
 
 ## Resolution is important
 
-It's quite obvious, that time consumption of marker detection algorithm depends on a count of pixels of processing image. If you have **1280x720** pixels image, every time the algorithm will process **3 times more**, then if it was **640x480**. But if you want decrease resolution in order to get a performance, a precision will decrease accordingly.
+It's quite obvious, that time consumption of marker detection algorithm depends on a count of pixels of processing image. If you have **1280x720** pixels image, every time the algorithm will process **3 times more**, then if it was **640x480**. But if you want to decrease the resolution in order to get a performance, the precision will decrease accordingly. (Actually, I didn't found the real complexity and time consumption of `aruco::detectMarkers` and `cv::solvePnP`, but a short glance on the source code of this algorithms shown that a time scales with a size of an image. Also I've checked it on the real experiments.)
 
-**oCam-1MGN-U Plus** can provide **60fps@1280×720** and **80fps@640×480**, and when I changed the resolution I've noticed, that time to take an image from camera matrix to my program through the [v4l](http://wiki.ros.org/usb_cam) driver changes too. The changes were not too big, about several milliseconds, but if we are speaking about robot positioning, we need to get as fast system as possible with a acceptable precision.
+**oCam-1MGN-U Plus** camera can provide **60fps@1280×720** and **80fps@640×480**, and when I changed the resolution I've noticed, that time to take an image from camera matrix to my program through the [v4l](http://wiki.ros.org/usb_cam) driver changes too. The changes were not too big, about several milliseconds, but if we are speaking about robot positioning, we need to get as fast system as possible with a acceptable precision.
 
 ## Effect of binning
 
@@ -41,10 +41,10 @@ As you can understand from the text above, the visibility of marker's contours h
 
 ## Light condition
 
-When I've debugged our problem with pose estimation, I was surprised how the output of [adaptive thresholding](https://docs.opencv.org/3.4.0/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3) strongly depends on illumination of marker's board.
-We've used IR projectors [DOMINANT II™+ Infra Red](http://www.irtechnologies.ru/infra-red-d252.html)  as a source of light, but it's not enough. They produces light with (#TODO lumens) [lumens](https://en.wikipedia.org/wiki/Lumen_(unit))  and a quite small radius, so they can't provide uniform illumination and a __white color becoming gray__. Unfortunately, this is unacceptable for marker detection, because adaptive thresholding starts to give a noisy and wrong output.
-With several tests, I've found that an acceptable illumination with about (#TODO lumens) of [luminous flux](https://en.wikipedia.org/wiki/Luminous_flux).
-(#TODO images with effect of good light and bad)
+When I've debugged the problem with the pose estimation, I was surprised how an output of the [adaptive thresholding](https://docs.opencv.org/3.4.0/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3) strongly depends on illumination of a marker's board.
+We've used infrared projectors [DOMINANT II™+ Infra Red](http://www.irtechnologies.ru/infra-red-d252.html) as a source of light, but it wasn't enough. This projectors produces very uneven illumination, and picture becoming over-lighted in a center and darker to the borders. That leads to the problem, that __white color becoming gray__ and the algorithm of markers detection starts to output noisy.
+
+Just remember, that you need to __provide as even light as possible__.
 
 ## IMU as a source of angles
 
@@ -72,6 +72,8 @@ So, after this inspection left only two mutable parameters: `adaptiveThreshWinSi
 I wrote small piece of code, that went through parameters, sent it to another service, that calculated [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) and combined it to `csv` file. After I've put the camera on fixed place, turned on the light and went out to do something else. After several hours the report was done.
 
 [Here is](https://docs.google.com/spreadsheets/d/1EDb3lZr4qxF3SI_sTS4PJj2DlKOLGCD5HGJkCgIwjaA/edit?usp=sharing) two of several reports, that I've created. I'm not so good in math, so I just took a standard deviation of position and yaw angle, normalized it (unfortunately, you can't just sum degrees with meters :(((() and looked on a top10.
-Long story short, I chosen this values: `adaptiveThreshWinSizeMin=5, adaptiveThreshWinSizeMax=5, adaptiveThreshWinSizeStep=100, cornerRefinementWinSize=10, cornerRefinementMinAccuracy=0.001, cornerRefinementMaxIterations=50`. I'm not sure, that it's a best one, but tests in a real world show, that it works quite well and better than it was.
+Long story short, I chosen this values: `adaptiveThreshWinSizeMin=5, adaptiveThreshWinSizeMax=5, adaptiveThreshWinSizeStep=100, cornerRefinementWinSize=10, cornerRefinementMinAccuracy=0.001, cornerRefinementMaxIterations=50`. I'm not sure, that it's a best one, but the tests in a real world show, that it works quite well and better than it was.
 
-* Conclusion
+## Conclusion
+
+After long journey I found different conditions, that affects the quality of visual based position estimation. Light, camera properties, algorithm parameters, IMU and  magnets can play it's role on this scene. Maybe I haven't discovered any important things, that can flip the game, but I had to timebox my investigation and in the end of it, we get well working system.
