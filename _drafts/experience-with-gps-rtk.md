@@ -5,7 +5,7 @@ categories:
 - hardware
 tags:
 - GPS
-- GPS RTK
+- GPS_RTK
 - navigation
 - drotek
 ---
