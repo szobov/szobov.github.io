@@ -8,6 +8,11 @@ tags:
 - camera
 - opencv
 - robots
+- pixhawk
+- IMU
+- light
+- aruco
+- pose_estimation
 ---
 
 * content
@@ -46,9 +51,17 @@ We've used infrared projectors [DOMINANT II™+ Infra Red](http://www.irtechnolo
 
 Just remember, that you need to __provide as even light as possible__.
 
+For example, it's the experimental installation. Here is used [Stratus 100W LED](https://www.stratusleds.com/module/) module. It's difficult to use this module in our case, but it's a good example of even light: all parts of board is lit up. Black color is black, white is white.
+
+![lab_stratus](/assets/images/experiments-with-pose-estimations-and-aruco/lab.jpg)
+
 ## IMU as a source of angles
 
-The [IMU](https://en.wikipedia.org/wiki/Inertial_measurement_unit) of our [flight controller](https://docs.px4.io/en/flight_controller/pixhawk-2.html) can gives a very precise value of [rotation quaternion](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation). But wait, the output of [solvePnP](https://docs.opencv.org/3.4.6/d9/d0c/group__calib3d.html#ga549c2075fac14829ff4a58bc931c033d) is the rotation and the translation vectors. What if we'll use the rotation angles from IMU, but the translation from `solvePnP`? Actually, the estimations of the translation vector by `solvePnP` is more precise, than rotation, that means if we will use more accurate source of rotation angles, we will get better working system. Additionally, we can use a smaller resolution of an image, enough to estimate the translation fairly, and score in the performance.
+The [IMU](https://en.wikipedia.org/wiki/Inertial_measurement_unit) of our [flight controller](https://docs.px4.io/en/flight_controller/pixhawk-2.html) can gives a very precise value of [rotation quaternion](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation).
+
+![pixhawk2_cube](/assets/images/experiments-with-pose-estimations-and-aruco/pixhawk2_cube_hero.png)
+
+But wait, the output of [solvePnP](https://docs.opencv.org/3.4.6/d9/d0c/group__calib3d.html#ga549c2075fac14829ff4a58bc931c033d) is the rotation and the translation vectors. What if we'll use the rotation angles from IMU, but the translation from `solvePnP`? Actually, the estimations of the translation vector by `solvePnP` is more precise, than rotation, that means if we will use more accurate source of rotation angles, we will get better working system. Additionally, we can use a smaller resolution of an image, enough to estimate the translation fairly, and score in the performance.
 
 To be clear, we've used the `pose.orientation` from [/local_position/pose](http://wiki.ros.org/mavros#mavros.2BAC8-Plugins.local_position) topic, and then converted it to Euler angles (it's easy to deal with and more understandable for humans). After it, you can make the [tf2::Transform](http://docs.ros.org/jade/api/geometry_msgs/html/msg/Transform.html) and use it everywhere you want in your ROS code.
 We've tested this solution and it works really well: very precise positioning without severe deviations. Just what we want, but...
