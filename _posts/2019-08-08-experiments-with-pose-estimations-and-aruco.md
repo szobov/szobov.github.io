@@ -23,7 +23,7 @@ tags:
 If your robot will move in the conditions, where a using of GPS is almost impossible, e.g. inside the buildings or the enclosures, you need to have a spare source of a pose estimation. One of the cheap and proven solution is the pose estimation with a [calibrated camera]({% post_url 2019-05-19-camera-calibration-with-ros %}) and the printed markers, like [AprilTags](https://github.com/AprilRobotics/apriltag) or [ArUco](https://docs.opencv.org/3.1.0/d5/dae/tutorial_aruco_detection.html) markers. The second type of markers (**ArUco**) we are using in our project. And it takes some time, but after a long journey with the different experiments, now we have **5-10 centimeters precision** with a distance of **6-7 meters**. With this precision we've also reached a quite acceptable framerate, about **50 fps**.
 
 I've decided to mention in this article several important notes, that I've got, while developed this system of visual positioning.
-All of this notes related to [OpenCV 3.4](https://docs.opencv.org/3.4.6/d9/d6a/group__aruco.html). All benchmarks has been made on [ODROID-XU4](https://forum.odroid.com/viewtopic.php?t=20864) and using [oCam-1MGN-U Plus](https://www.hardkernel.com/shop/ocam-1mgn-u-plus-1mp-usb3-0-mono-global-shutter/).
+All of this notes related to [OpenCV 3.4](https://docs.opencv.org/3.4.6/d9/d6a/group__aruco.html). All benchmarks has been made on [ODROID-XU4](https://wiki.odroid.com/odroid-xu4/odroid-xu4) and using [oCam-1MGN-U Plus](https://www.hardkernel.com/shop/ocam-1mgn-u-plus-1mp-usb3-0-mono-global-shutter/).
 
 ## Resolution is important
 
