@@ -588,10 +588,10 @@
     dependencies = ["mini_portile2"];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1npfli5vapvr4mjrnvm2pfdm2viwqx85p75nnbh65jmsq3xbl4d6";
+      sha256 = "0nmdrqqz1gs0fwkgzxjl4wr554gr8dc1fkrqjc2jpsvwgm41rygv";
       type = "gem";
     };
-    version = "1.9.1";
+    version = "1.10.4";
   };
   octokit = {
     dependencies = ["sawyer"];
