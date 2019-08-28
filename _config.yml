@@ -8,7 +8,7 @@
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock, shell.nix, gemset.nix]
 
 # Site settings
-title: Sergei Zobov
+title: Sergei Zobov | Blog
 brief-intro: Software and robotics engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://szobov.github.io" # the base hostname & protocol for your site
