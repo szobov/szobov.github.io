@@ -38,8 +38,8 @@ layout: null
                      {% assign url = tag | split: 'src="' | last | remove: '"' %}
                      <image>
                          <url>{{ url | prepend: site.baseurl | prepend: site.url }}</url>
-                     <title>{{ post.title }}</title>
-                     <link>{{ site.url }}{{ site.baseurl }}</link>
+                         <title>{{ post.title | xml_escape }}</title>
+                         <link>{{ site.url }}{{ site.baseurl }}</link>
                      </image>
                  {% endif %}
               {% endfor %}
