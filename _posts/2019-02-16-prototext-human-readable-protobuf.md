@@ -3,6 +3,7 @@ layout: post
 title: Human-readable protobuf -- text and JSON formats.
 categories:
 - utilities
+image: /assets/images/default/logo.png
 tags:
 - protobuf
 - c++

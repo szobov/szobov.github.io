@@ -3,6 +3,7 @@ layout: post
 title: My first blog post
 categories:
 - blog
+image: /assets/images/default/logo.png
 tags:
 - blog
 ---

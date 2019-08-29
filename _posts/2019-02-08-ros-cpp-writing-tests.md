@@ -3,6 +3,7 @@ layout: post
 title: Example of writing C++ tests in ROS (Kinetic)
 categories:
 - testing
+image: /assets/images/default/logo.png
 tags:
 - ros
 - c++

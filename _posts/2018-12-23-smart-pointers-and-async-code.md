@@ -3,6 +3,7 @@ layout: post
 title: Be careful of using smart pointers and async code (C++)
 categories:
 - software
+image: /assets/images/default/logo.png
 tags:
 - c++
 - shared_ptr

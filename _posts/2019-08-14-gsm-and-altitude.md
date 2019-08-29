@@ -3,7 +3,7 @@ layout: post
 title: GSM and altitude
 categories:
 - radio
-image: /assets/images/gsm_and_altitude/MegaFon.svg
+image: /assets/images/default/logo.png
 tags:
 - GSM
 - 4G
