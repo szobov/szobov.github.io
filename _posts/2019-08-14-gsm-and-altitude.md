@@ -3,6 +3,7 @@ layout: post
 title: GSM and altitude
 categories:
 - radio
+image: /assets/images/gsm_and_altitude/MegaFon.svg
 tags:
 - GSM
 - 4G
@@ -27,7 +28,7 @@ Here is the plots of result:
 
 ![megafon](/assets/images/gsm_and_altitude/MegaFon.svg)
 
-![megafon](/assets/images/gsm_and_altitude/MTS.svg)
+![mts](/assets/images/gsm_and_altitude/MTS.svg)
 
 ## Conclusion
 

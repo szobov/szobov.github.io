@@ -3,6 +3,7 @@ layout: post
 title: Experiments with pose estimation by ArUco Markers and SolvePnP
 categories:
 - camera
+image: /assets/images/experiments-with-pose-estimations-and-aruco/lab.jpg
 tags:
 - ros
 - camera

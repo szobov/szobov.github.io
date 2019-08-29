@@ -3,6 +3,7 @@ layout: post
 title: The problem of using pneumatic actuators and magnetometers
 categories:
 - hardware
+image: /assets/images/magnetometers-and-pneumatic-actuators/pneumo-actuator.jpg
 tags:
 - pneumatic
 - magnet

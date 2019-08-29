@@ -3,6 +3,7 @@ layout: post
 title: Difficulties of using USB3.0 and 2.4 GHz radio devices
 categories:
 - hardware
+image: /assets/images/try-to-avoid-using-usb3-and-2.4hz-radio-like-gps/usb3.0-gps-location.png
 tags:
 - usb3.0
 - radio

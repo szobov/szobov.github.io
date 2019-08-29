@@ -3,6 +3,7 @@ layout: post
 title: Camera calibration with ROS
 categories:
 - camera
+image: /assets/images/camera-calibration-with-ros/bastler-before.png
 tags:
 - ros
 - camera

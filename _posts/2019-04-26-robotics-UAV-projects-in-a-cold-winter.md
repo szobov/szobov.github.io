@@ -3,6 +3,7 @@ layout: post
 title: The caveats for robotics (UAV) projects in a cold winter
 categories:
 - outdoor
+image: /assets/images/robotics-and-uav-projects-cold-weather/hello.jpg
 tags:
 - outdoor
 - winter
