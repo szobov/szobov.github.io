@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs>{} } :
 let
   stdenv = pkgs.stdenv;
-  ruby = pkgs.ruby_2_3;
+  ruby = pkgs.ruby_2_6;
 in
 let
 
