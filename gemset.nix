@@ -670,12 +670,14 @@
     version = "1.5.0";
   };
   rubyzip = {
+    groups = ["default"];
+    platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1n1lb2sdwh9h27y244hxzg1lrxxg2m53pk1vq7p33bna003qkyrj";
+      sha256 = "1gz0ri0pa2xr7b6bf66yjc2wfvk51f4gi6yk7bklwl1nr65zc4gz";
       type = "gem";
     };
-    version = "1.2.2";
+    version = "2.0.0";
   };
   safe_yaml = {
     source = {
