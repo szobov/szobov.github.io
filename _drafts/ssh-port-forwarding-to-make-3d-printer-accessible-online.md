@@ -36,6 +36,37 @@ We have three main parts:
 
 1. The computer, constantly connected to the printer. With the operation system, that supports [SSH Client](https://en.wikipedia.org/wiki/Comparison_of_SSH_clients#Platform). There are also two requirements: it should support 3d-printer controlling software, like **OctoPrint** or [Repeater server](https://www.repetier-server.com/). Likely, it will be Linux (Ubuntu/Debian) server, because they are normally used with computers like [Raspberry PI](https://www.raspberrypi.org/), [Orange PI](http://www.orangepi.org/), or even your old [Android Phone](https://github.com/foosel/OctoPrint/wiki/Using-an-Android-phone-as-a-webcam).
 2. Virtual server, that could be ordered from the plethora of different kinds of cloud-providers. With the operation system, that supports [SSH Server](https://en.wikipedia.org/wiki/Comparison_of_SSH_servers#Platform). It could be either **Windows** or **Linux**.
-3. Your **Linux**/**BSD**/**Windows**/**MacOS** computer, that also supports **SSH client**.
+3. Your **Linux**/**BSD**/**Windows**/**MacOS** computer, that also supports **SSH client**. I also prefer to use my **Android** mobile phone, with **ConnectBot** ([google play](https://play.google.com/store/apps/details?id=org.connectbot&hl=en_US), [fdroid](https://f-droid.org/en/packages/org.connectbot/)).
 
-I assume, that you know, how to create and configure computer for 3d-printer server and virtual server. If you don't, you can use [this](https://www.digitalocean.com/docs/droplets/how-to/) and [this](https://octoprint.org/download/) tutorials.
+I assume, that you know, how to create and configure computer for 3d-printer server and virtual server. If you don't, use [this](https://www.digitalocean.com/docs/droplets/how-to/) and [this](https://octoprint.org/download/) tutorials.
+
+First of all, you need to connect to your cloud virtual server from 3d-printer's computer and your own computer. This tutorial from [Digital Ocean](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/) will work pretty well for any other cloud providers.
+
+<!-- Now, on computer, connected to  -->
+
+
+
+
+* systemd service
+
+```
+[Unit]
+    Description=Tunnel to the cloud-server with port forwarding
+    After=network.target network-online.target ssh.target
+
+[Service]
+    User=ubuntu
+    ExecStart=/usr/bin/ssh -R 8128:127.0.0.1:5000 -N -T <user>@<cloud_server_ip> -i <path/to/key_file>
+    RestartSec=5
+    Restart=always
+
+[Install]
+    WantedBy=multi-user.target
+```
+
+
+```bash
+function printer-ssh-tunnel() {
+   ssh -L 9999:127.0.0.1:8128 -N -T <user>@<cloud_server_ip> -i <path/to/key_file>
+}
+```
