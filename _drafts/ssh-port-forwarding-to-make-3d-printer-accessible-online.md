@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Make 3D-printer online with SSH port-forwarding
+title: Accessible 3D-printer online with SSH port-forwarding
 categories:
 - 3dprinter
 image:
@@ -16,13 +16,13 @@ tags:
 
 ## What is the problem?
 
-Since I've bought a 3D-printer ((Ender 3)[https://www.creality3d.shop/products/creality3d-ender-3-pro-high-precision-3d-printer]) I wanted to print remotely. Think you know, it takes quite long time to print something, so I want this machine to work, even when I'm not in home.
+Since I've bought a 3D-printer ([Ender 3](https://www.creality3d.shop/products/creality3d-ender-3-pro-high-precision-3d-printer)) I wanted to print remotely. Think you know, it takes quite long time to print something, so I want this machine to work, even when I'm not in home.
 I use an [OctoPrint](https://github.com/foosel/OctoPrint) server instance and it has a very reach **web-page** to access the 3D-printer. Due to it's **web**-page I can make it available online for the remote control. 
 
-My (ISP)[https://www.sknt.ru/] provides free Static IPv4/6 address, and I could use it, but I don't want to deal with all this security configurations to prevent everyone from access to the printer.
-There is also one alternative, even suggested by official [documentation](http://docs.octoprint.org/en/master/features/accesscontrol.html), and it is a [VPN](). And yes, it's nice, but to be frank, I've already configured the [OpenVPN]() instance, so I don't feel it's a simplest solution.
+My [ISP](https://www.sknt.ru/) provides free Static IPv4/6 address, and I could use it, but I don't want to deal with all this security configurations to prevent everyone from access to the printer.
+There is also one alternative, even suggested by official [documentation](http://docs.octoprint.org/en/master/features/accesscontrol.html) -- it's [VPN](https://en.wikipedia.org/wiki/Virtual_private_network). And yes, it's nice, but to be frank, I've already configured the [OpenVPN](https://openvpn.net/) instance, so I don't feel it's a simplest solution.
 
-To add more context, the **OctoPrint** server run on small computer on [Ubuntu 18.04]. I also have a small virtual server in [Digital Ocean] that also run on **Ubuntu**. They both have the [SSH](https://en.wikipedia.org/wiki/Secure_Shell) server and client out of the box, so why don't I use it to provide and easiest and secure access to my printer?
+To add more context, the **OctoPrint** server run on small computer on [Ubuntu 18.04]. I also have a small virtual server in [Digital Ocean](https://www.digitalocean.com/) that also run on **Ubuntu**. They both have the [SSH](https://en.wikipedia.org/wiki/Secure_Shell) server and client out of the box, so why don't I use it to provide and easiest and secure access to my printer?
 
 ## Alternatives
 
@@ -40,11 +40,13 @@ We have three main parts:
 
 I assume, that you know, how to create and configure computer for 3d-printer server and virtual server. If you don't, use [this](https://www.digitalocean.com/docs/droplets/how-to/) and [this](https://octoprint.org/download/) tutorials.
 
-First of all, you need to connect to your cloud virtual server from 3d-printer's computer and your own computer. This tutorial from [Digital Ocean](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/) will work pretty well for any other cloud providers.
+First of all, you need to connect to your cloud virtual server from 3d-printer's computer and your own computer through the SSH. This tutorial from [Digital Ocean](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/) will work pretty well for any other cloud providers, so I suggest you to use it.
 
-<!-- Now, on computer, connected to  -->
-
-
+Now, on computer, connected to 3d-printer and your computer check connection to the cloud server by executing:
+```
+$ ssh <user>@<cloud_server_ip> -i <path/to/key_file> echo "connected"
+```
+If you see **connected** in console's output everything is fine.
 
 
 * systemd service
