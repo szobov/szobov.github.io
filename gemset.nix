@@ -586,12 +586,14 @@
   };
   nokogiri = {
     dependencies = ["mini_portile2"];
+    groups = ["default"];
+    platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0nmdrqqz1gs0fwkgzxjl4wr554gr8dc1fkrqjc2jpsvwgm41rygv";
+      sha256 = "1yi8j8hwrlc3rg5v3w52gxndmwifyk7m732q9yfbal0qajqbh1h8";
       type = "gem";
     };
-    version = "1.10.4";
+    version = "1.10.8";
   };
   octokit = {
     dependencies = ["sawyer"];
