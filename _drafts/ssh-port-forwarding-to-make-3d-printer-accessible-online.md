@@ -42,12 +42,19 @@ I assume, that you know, how to create and configure computer for 3d-printer ser
 
 First of all, you need to connect to your cloud virtual server from 3d-printer's computer and your own computer through the SSH. This tutorial from [Digital Ocean](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/) will work pretty well for any other cloud providers, so I suggest you to use it.
 
-Now, on computer, connected to 3d-printer and your computer check connection to the cloud server by executing:
+Now, on computers, connected to 3d-printer and your computer, check connection to the cloud server by executing:
 ```
 $ ssh <user>@<cloud_server_ip> -i <path/to/key_file> echo "connected"
 ```
 If you see **connected** in console's output everything is fine.
 
+Then connect to the printer's computer and execute:
+
+```
+$ sudo mkdir -p /usr/lib/systemd/system
+& sudo vi /usr/lib/systemd/system/cloud-ssh-tunnel.service
+```
+Type **i**, copy the script below and **Shift**+**Insert** in terminal. After type **Esc**, **:wq**.
 
 * systemd service
 
@@ -66,9 +73,19 @@ If you see **connected** in console's output everything is fine.
     WantedBy=multi-user.target
 ```
 
+After it, execute in terminal:
+
+```
+$ sudo systemctl enable cloud-ssh-tunnel.service
+$ sudo systemctl start cloud-ssh-tunnel.service
+```
+
+Actually, that's all.
+
+Now, all you need to connect to the printer's computer and execute in terminal:
 
 ```bash
-function printer-ssh-tunnel() {
-   ssh -L 9999:127.0.0.1:8128 -N -T <user>@<cloud_server_ip> -i <path/to/key_file>
-}
+$ ssh -L 9999:127.0.0.1:8128 -N -T <user>@<cloud_server_ip> -i <path/to/key_file>
 ```
+
+<!-- Now on your computer you can open the  -->
