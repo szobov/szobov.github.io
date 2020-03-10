@@ -22,7 +22,10 @@ I use an [OctoPrint](https://github.com/foosel/OctoPrint) server instance and it
 My [ISP](https://www.sknt.ru/) provides free Static IPv4/6 address, and I could use it, but I don't want to deal with all this security configurations to prevent everyone from access to the printer.
 There is also one alternative, even suggested by official [documentation](http://docs.octoprint.org/en/master/features/accesscontrol.html) -- it's [VPN](https://en.wikipedia.org/wiki/Virtual_private_network). And yes, it's nice, but to be frank, I've already configured the [OpenVPN](https://openvpn.net/) instance, so I don't feel it's a simplest solution.
 
-To add more context, the **OctoPrint** server run on small computer on [Ubuntu 18.04]. I also have a small virtual server in [Digital Ocean](https://www.digitalocean.com/) that also run on **Ubuntu**. They both have the [SSH](https://en.wikipedia.org/wiki/Secure_Shell) server and client out of the box, so why don't I use it to provide and easiest and secure access to my printer?
+To add more context, the **OctoPrint** server run on small computer on [Ubuntu 18.04](https://elinux.org/BeagleBoardUbuntu#eMMC:_All_BeagleBone_Variants_with_eMMC). I also have a small virtual server in [Digital Ocean](https://www.digitalocean.com/) that run on **Ubuntu**. They both have the [SSH](https://en.wikipedia.org/wiki/Secure_Shell) server and client out of the box, so why don't I use it to provide and easiest and secure access to my printer?
+
+![setup](/assets/images/ssh-port-forwarding-to-make-3d-printer-accessible-online/3d-printer.jpg)
+
 
 ## Alternatives
 
@@ -88,4 +91,6 @@ Now, all you need to connect to the printer's computer and execute in terminal:
 $ ssh -L 9999:127.0.0.1:8128 -N -T <user>@<cloud_server_ip> -i <path/to/key_file>
 ```
 
-<!-- Now on your computer you can open the  -->
+Now in your browser you can open [127.0.0.1:9999](http://127.0.0.1:9999) and you will see the **OctoPrint** page. Hooray!
+
+![setup](/assets/images/ssh-port-forwarding-to-make-3d-printer-accessible-online/octoprint_localhost.jpg)
