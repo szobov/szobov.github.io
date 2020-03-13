@@ -3,7 +3,7 @@ layout: post
 title: Accessible 3D-printer online with SSH port-forwarding
 categories:
 - 3dprinter
-image:
+image: /assets/images/ssh-port-forwarding-to-make-3d-printer-accessible-online/octoprint_localhost.jpg
 tags:
 - 3dprinter
 - ssh
