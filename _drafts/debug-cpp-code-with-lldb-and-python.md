@@ -9,6 +9,7 @@ tags:
 - python
 - lldb
 - gcc
+- matplotlib
 ---
 
 * content
@@ -36,7 +37,7 @@ contours = size=9 {
 Before this time I've known about only two way of debugging C++ code: `std::cout << "VAL: " << value << std::endl;` and [gdb](https://www.gnu.org/software/gdb/).
 Using both this methods I can't actually see visible picture of what's going on. I didn't also want to bring new dependencies into our project just for debugging purposes. Spent some time looking for other options, I've found [LLDB](https://lldb.llvm.org/index.html) and it's awesome **Python** [scripting ability](https://lldb.llvm.org/use/python.html).
 
-## Why is it interesting?
+## Why is it interesting? Showcase
 
 Imagine, you can inspect all data available in run-time in your C++ code and you can manipulate it with whole python's ecosystem.
 
@@ -82,7 +83,7 @@ $ /usr/bin/python -m pip install ipython
 ```
 And let's also install [numpy](https://numpy.org/doc/stable/) and [matplotlib](https://matplotlib.org/):
 ```shell
-/usr/bin/python -m pip install numpy matplotlib
+$ /usr/bin/python -m pip install numpy matplotlib
 ```
 Cool! Now return back to our python shell in lldb. Since we have installed **IPython** we can run:
 ```python
@@ -264,6 +265,6 @@ In [4]: plt.show()
 
 In order to use your **custom python scripts** you can just add it to the **$PYTHONPATH** and it will be also accessible in this python shell.
 
-So that's it. Now you know how  it is easy to use very powerful tool lldb debugging you C++ code with python.
+So that's it. Now you know how it is easy to use very powerful tool **lldb** debugging you C++ code with **python**.
 
 For more information you can read [LLDB's manual](https://lldb.llvm.org/use/python.html#).
