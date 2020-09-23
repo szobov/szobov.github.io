@@ -26,7 +26,7 @@ This post is about my expressions after experiments with rangefinders. Especiall
 
 ## Experiments
 
-We've looked on the three different devices: **ultrasonic rangefinder**, [TeraRanger Evo 60m](https://www.terabee.com/shop/lidar-tof-range-finders/teraranger-evo-60m/) and [Garmin LIDAR-Lite v3](https://buy.garmin.com/en-US/US/p/557294).
+We've looked on the three different devices: **ultrasonic rangefinder**, [TeraRanger Evo 60m](https://web.archive.org/web/20200711091755/https://www.terabee.com/shop/lidar-tof-range-finders/teraranger-evo-60m/) and [Garmin LIDAR-Lite v3](https://buy.garmin.com/en-US/US/p/557294).
 
 ![Rangefinders pack](/assets/images/terraranger-evo-60-m-dissapointment/pack-rangefinders2.jpg)
 
@@ -36,7 +36,7 @@ So, we had two competitors: **TeraRanger** and **LIDAR**. This article is not ab
 
 ## TeraRanger
 
-From it's description on [this](https://www.terabee.com/shop/lidar-tof-range-finders/teraranger-evo-60m/) the webpage:
+From it's description on [this](https://web.archive.org/web/20200711091755/https://www.terabee.com/shop/lidar-tof-range-finders/teraranger-evo-60m/) the webpage:
 
 > TeraRanger Evo 60m is the long-range Time-of-Flight addition to the Evo sensor family. With its 60 meters detection range and an update rate of up to 240Hz, it offers high-performance in a compact (from 9 grams) and low-cost design.
 

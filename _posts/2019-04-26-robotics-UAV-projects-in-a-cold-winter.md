@@ -49,7 +49,7 @@ It would be better to test your devices indoor, before let them fly outside. It'
 
 You can also provide an additional heating. For example, if you have a big accumulator, it'll heat up under load. So, you can put your hardware somewhere near the battery and check, maybe it's enough to maintain operable temperature.
 
-If your system will work fully automatically, you can check the temperature before starting any actions and if it's unacceptable weather condition outside, just keep your robot in a safe place and do not let it crash. To get the information about the weather you can use web api, like [Dark Sky API](https://darksky.net/dev), buy your own station, like [Vantage Vue](https://www.davisinstruments.com/solution/vantage-vue/), or [make it yourself](https://www.instructables.com/id/Complete-DIY-Raspberry-Pi-Weather-Station-with-Sof/).
+If your system will work fully automatically, you can check the temperature before starting any actions and if it's unacceptable weather condition outside, just keep your robot in a safe place and do not let it crash. To get the information about the weather you can use web api, like [Dark Sky API](https://darksky.net/dev), buy your own station, like [Vantage Vue](https://web.archive.org/web/20200419141228/https://www.davisinstruments.com/solution/vantage-vue/), or [make it yourself](https://www.instructables.com/id/Complete-DIY-Raspberry-Pi-Weather-Station-with-Sof/).
 
 ### Water
 
