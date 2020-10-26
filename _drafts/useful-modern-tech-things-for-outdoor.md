@@ -41,7 +41,7 @@ Of course it will work only for places with at least few hours without clouds. F
 ## Accumulators
 
 It's mountain's hike, so there is no artificial light, only this you've brought with you. Most likely you will use the [headlamps](https://www.theadventurejunkies.com/brightest-headlamps/).
-Headlamps are super-cool, but the problem is the same as with smartphones, it's accumulators. There are a lot of headlamps with AA or AAA batteries. But I don't really like the idea of normal batteries, because it's very difficult to recycle it, particularly in Russia. I decided to search the web and found this [rechargeable batteries](https://www.aliexpress.com/item/32983512561.html) with capacity 3000 mAh. And again, it was beyond my expectations because 2 batteries were enough for 12 days. Of course, we used headlamps only on evenings and nights, but still it's great value. 
+Headlamps are super-cool, but the problem is the same as with smartphones, it's accumulators. There are a lot of headlamps with AA or AAA batteries. But I don't really like the idea of normal batteries, because it's very difficult to recycle it, particularly in Russia. I decided to search the web and found this [rechargeable batteries](https://www.aliexpress.com/item/32983512561.html) with capacity 3000 mAh. And again, it was beyond my expectations because 2 batteries were enough for 12 days. Of course, we used headlamps only on evenings and nights, but still it's great value.
 
 ![battery_2](/assets/images/useful-tech-for-outdoor/battery_2.jpg)
 
@@ -49,13 +49,19 @@ Headlamps are super-cool, but the problem is the same as with smartphones, it's 
 
 ## 3D printed tools
 
-![carabiner](/assets/images/useful-tech-for-outdoor/carabiner.jpg)
+Since I have a 3d-printer, I always try to find something useful, what could I print.
+So I found this [blog post](https://www.digitaltrends.com/cool-tech/3d-printed-camping-backpacking-gear/) and made several items from their list.
 
-[carabiner](https://www.thingiverse.com/thing:1819242)
+* [Carabiners](https://www.thingiverse.com/thing:1819242) are very useful. I won't use it for climbing safety, but to hang something or fasten on backpack definitely. I fastened my tracking boots, bags with food or rubbish, etc. It's lightweight and easy to use and print.
 
-[strap buckle](https://www.thingiverse.com/thing:2814683)
+  ![carabiner](/assets/images/useful-tech-for-outdoor/carabiner.jpg)
 
-![backpack_buckle_1](/assets/images/useful-tech-for-outdoor/backpack_buckle_1.jpg)
-![backpack_buckle_2](/assets/images/useful-tech-for-outdoor/backpack_buckle_2.jpg)
+* One of our Quechua's backpack had a broken male part of buckle. But someone already created [this 3D-model](https://www.thingiverse.com/thing:2137647), which isn't ideal but quite good. I also suggest you to print spare one, because we'd broken one and quickly replaced it.
 
-[backpack buckle](https://www.thingiverse.com/thing:2137647)
+  ![backpack_buckle_1](/assets/images/useful-tech-for-outdoor/backpack_buckle_2.jpg)
+
+* [Gas canister stand](https://www.thingiverse.com/thing:272127) can be very helpful, when you're set up your camping on a rough surface. I also tried [this one](https://www.thingiverse.com/thing:2755848), but it broke twice I used, but maybe it was a problem with my printer's settings.
+
+* A [strap buckle](https://www.thingiverse.com/thing:2814683) usually isn't very important, but I bought several meters of strap and prepared model. The grip isn't perfect, but it still can fasten more things to your bag.
+
+
