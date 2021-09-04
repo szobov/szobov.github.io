@@ -10,38 +10,41 @@ tags:
 - segfaults
 ---
 
+
+* content
+{:toc}
+
 > Long time no see.
 
 
 ## Background
 
-C++ is everywhere. Unfortunately or not, but we should deal with it very often. Even if you're Chad ML Reseacher, after you've trained your model using Python, there is a high probability you'll run the inference using C++ code. Computer Vision frameworks, Robotics software, Crypto, etc., many of this stuff is usually written in C++.
-Of course I hope you'll never face any issues, but things like segfaults, infinite-loops can happens sometimes.
+C++ is everywhere. Unfortunately or not, but we should deal with it very often. Even if you’re Chad ML Researcher, after you’ve trained your model using Python, there is a high probability you’ll run the inference using C++ code. Computer Vision frameworks, Robotics software, Crypto, etc., many of this stuff is usually written in C++. Of course, I hope you’ll never face any issues, but things like segfaults, infinite-loops can happen sometimes.
 
-Here I would like to share with you some tricks I use to debug C++ code.
-It mostly about cases, when you need to build code yourself using some build tools, like CMake, Make, catkin or something similar.
+Here I would like to share with you some tricks I use to debug C++ code. It is mostly about cases when you need to build code yourself using some build tools, like CMake, Make, catkin, or something similar.
 
 ## Include debug symbols
 
-First of all, you need to build your code to add [debug symbols](https://en.wikipedia.org/wiki/Debug_symbol). In general, default option is to build most optimized code with any debug information (yes, we're all suppose that our code is perfect). So, for **CMake** it could be done by specifying parameter `-DCMAKE_BUILD_TYPE=RelWithDebInfo`, for example to execute CMake like `cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo`.
-It also useful sometimes to disable optimizations, like passing `-O0` to compilator or setting `CMAKE_BUILD_TYPE=Debug`, but be careful, quite often it really slow down your code or even can [break it](https://www.reddit.com/r/cpp_questions/comments/n4whha/eigen_types_generating_wonky_results_depending_on/). So, if you can't disable optimizations, don't be scared if debuggers will show you wrong line numbers.
+First of all, you need to build your code to add [debug symbols](https://en.wikipedia.org/wiki/Debug_symbol). In general, the default option is to build the most optimized code with any debug information (yes, we all suppose that our code is perfect). So, for **CMake** it could be done by specifying parameter `-DCMAKE_BUILD_TYPE=RelWithDebInfo`, for example, to execute CMake like `cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo`.
+It is also useful sometimes to disable optimizations, like passing `-O0` to compilator or setting `CMAKE_BUILD_TYPE=Debug`, but be careful, quite often it really slow down your code or even can [break it](https://www.reddit.com/r/cpp_questions/comments/n4whha/eigen_types_generating_wonky_results_depending_on/). So, if you can't disable optimizations, don't be scared if debuggers will show you wrong line numbers.
 
 ## Core dumps
 
-The next important thing are [core dumps](https://en.wikipedia.org/wiki/Core_dump). In general it's disabled by default, but you can [find on the internet](https://stackoverflow.com/questions/6152232/how-to-generate-core-dump-file-in-ubuntu) how to enable it. When it's enabled, every time any program on your PC will crash with *SIGSEGV* (segfault!). By "any" I mean if your web-browser will crash it will leave the core dump. Core dump is like a snapshot of the program, just before it has been interrupted.
+The next important thing is [core dumps](https://en.wikipedia.org/wiki/Core_dump). In general, it's disabled by default, but you can [find on the internet](https://stackoverflow.com/questions/6152232/how-to-generate-core-dump-file-in-ubuntu) how to enable it. When it's enabled, every time any program on your PC will crash with *SIGSEGV* (segfault!). By "any" I mean if your web-browser will crash it will leave the core dump. A core dump is like a snapshot of the program, just before it has been interrupted.
 
 ## Debuggers
 
-The most important thing is debugger, without it everything is almost impossible.
+The most important thing is a debugger, without it everything is almost impossible.
 There are two options [LLDB](https://lldb.llvm.org) and [GDB](https://www.gnu.org/software/gdb/). It's probably better to debug [clang](https://clang.llvm.org) compiled code with **LLDB** and [gcc](https://gcc.gnu.org) compiled code with **GDB**, but they should work pretty smooth interchangeably.
-In my previous blog post I already mentioned [debugging with LLDB and Python]({% post_url 2020-09-22-debug-cpp-code-with-lldb-and-python %}), but I'll recommend you to try both options or at least get familiar with.
+In my previous blog post, I already mentioned [debugging with LLDB and Python]({% post_url 2020-09-22-debug-cpp-code-with-lldb-and-python %}), but I'll recommend you to try both options or at least get familiar with them.
 
 ## Examples
 
 ### Segfault
 
-Let's now look on some example of running debuggers.
-I had a program which encounters some [bug in CGAL](https://github.com/CGAL/cgal/issues/5711). When I run it, the output has been quite a short:
+Let's now look at some examples of running debuggers.
+I had a program that encounters some [bug in CGAL](https://github.com/CGAL/cgal/issues/5711) (you can find code there). When I run it, the output has been quite short:
+
 ```shell
 $ ./src/test/test_exe 
 Segmentation fault (core dumped)   <---- ヽ(°〇°)ﾉ
@@ -81,10 +84,11 @@ Process 239893 stopped
 What I did here?
 1. `lldb ./src/test/test_exe` -- started the program under **lldb**
 2. `r` -- to run a program. Because we have a segfault, **lldb** will automatically stop in the place where it happened.
-3. `thread backtrace` -- show traceback of the program with linenumbers! One of the easy to use and most valuable command in my opinion.
+3. `thread backtrace` -- show traceback of the program with line numbers! One of the easy-to-use and most valuable command in my opinion.
 
 Now we have a clue, where we can look to resolve this issue. It's in the file [SNC_FM_decorator.h in line number 420](https://github.com/CGAL/cgal/blob/50389862bf378d44123969f798caaaf086cd249f/Nef_3/include/CGAL/Nef_3/SNC_FM_decorator.h#L420). Seems like it's [nullpointer dereference](https://en.wikipedia.org/wiki/Null_pointer#Null_dereferencing) and now we can put some `ifs` around it and check the pointer correctness before it will crash the whole program.
 Even something like this may be enough in such cases:
+
 ```cpp
 if (e_below == nullptr) {
     std::cout << "Broken e_below ponter" << std::endl;
@@ -94,20 +98,20 @@ if (e_below == nullptr) {
 
 ### Infinite loop / long runs
 
-Another issue which could happens with C++ code -- is infinite loops. Because people not always use modern [range-based for loop](https://en.cppreference.com/w/cpp/language/range-for), but instead use raw pointers or iterators, it could sometimes hangs your program without any feedback. I also got such behaviour with mentioned above **CGAL** lib.
+Another issue that could happen with C++ code -- is infinite loops. Because people do not always use modern [range-based for loop](https://en.cppreference.com/w/cpp/language/range-for) but instead use raw pointers or iterators, it could sometimes hang your program without any feedback. I also got such behavior with mentioned above **CGAL** lib.
 
-But with debugger it deadly simple to find whats going on, just run your program under debugger and send it an interruption signal with `Ctrl + C`. For example, **lldb** will catch it, stop the program in this broken loop, where you can check the pointers or other variables, affecting the iterations.
+But with the debugger it's deadly simple to find what's going on, just run your program under the debugger and send it an interruption signal with `Ctrl + C`. For example, **lldb** will catch it, stop the program in this broken loop, where you can check the pointers or other variables, affecting the iterations.
 
 ## Sanitizers
 
-Some time ago people realized that in C++ you can override almost everything, and what if we can do an implementation of memory, address or others accessors, which will control of the wrong behaviour. It's how [sanitizers](https://github.com/google/sanitizers) came to life (before them at least [Valgrind](https://www.valgrind.org) already exists). Sanitizers can control the errors like use-after-free, double-free and etc, which are often cause segfaults we want to debug. The usage of sanitizers is very-very good practice in general, but right now I don't want to explain you all details. You can read about it on internet on slides like this [one](https://www.slideshare.net/sermp/sanitizer-cppcon-russia).
+Some time ago people realized that in C++ you can override almost everything, and what if we can do an implementation of memory, address, or other accessors, which will control the wrong behavior. It's how [sanitizers](https://github.com/google/sanitizers) came to life (before them at least [Valgrind](https://www.valgrind.org) already exists). Sanitizers can control the errors like use-after-free, double-free and etc, which often cause segfaults we want to debug. The usage of sanitizers is very-very good practice in general, but right now I don't want to explain to you all details. You can read about it on the internet on slides like this [one](https://www.slideshare.net/sermp/sanitizer-cppcon-russia).
 
-Let's look again on the similar program which cause a segfault, but we'll now compile it with address sanitizer before.
-Because I don't want to change CMake files, I'll just pass required options in command line:
+Let's look again at the similar program which causes a segfault, but we'll now compile it with address sanitizer before.
+Because I don't want to change CMake files, I'll just pass the required options in the command line:
 ```shell
 $ cmake -S . -B build_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_FLAGS="-fsanitize=address  -fsanitize=leak -g" -DCMAKE_C_FLAGS="-fsanitize=address  -fsanitize=leak -g" -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address  -fsanitize=leak" -DCMAKE_MODULE_LINKER_FLAGS="-fsanitize=address  -fsanitize=leak"
 ```
-After build if I'll re-run the program, the output will be quite cumbersome, but with some pieces of useful information:
+After a build, if I'll re-run the program, the output will be quite cumbersome, but with some pieces of useful information:
 
 ```shell
 =================================================================
@@ -174,7 +178,9 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 ==87528==ABORTING
 ```
 
+
 Are you scared of this? Me -- yes, but I glad that I can find here those lines:
+
 ```
 ==87528==ERROR: AddressSanitizer: heap-use-after-free on address 0x60f000216820 at pc 0x55cdc9027f96 bp 0x7fff99cb3160 sp 0x7fff99cb3150
 READ of size 8 at 0x60f000216820 thread T0
@@ -184,4 +190,14 @@ READ of size 8 at 0x60f000216820 thread T0
     #4 0x55cdc9027f95 in CGAL::Handle_for<CGAL::Nef_polyhedron_3_rep<CGAL::Epeck, CGAL::SNC_indexed_items, bool>, std::allocator<CGAL::Nef_polyhedron_3_rep<CGAL::Epeck, CGAL::SNC_indexed_items, bool> > >::~Handle_for() .../libigl/external/cgal/STL_Extension/include/CGAL/Handle_for.h:155
 ```
 
-Yes, someone did manual memory-management control instead of smart-pointers and introduced some double free error!
+Hell yeah! Someone did manual memory-management control instead of smart-pointers and introduced shiny double-free error!
+Now we can trace and patch places where objects are deleted several times and finally get our code working (not exactly, but at least now it won't segfault)!
+
+## Conclusion
+
+As I mentioned at the beginning of this article, C++ is everywhere, and have some expertise in its debugging is a very useful skill, ether you developer or researcher.
+Of course, you can always try to use IDEs like [VSCode](https://code.visualstudio.com) and hope, that it will work out of the box and help you with debugging, but for me stuff like **LLDB** or sanitizers much simpler and easy to start with, without any GUI.
+
+I'll also clarify, that I didn't cover all of the possible abilities of mentioned tools, but I hope now you'll spend some time to get familiar with it.
+
+Good luck and hope you'll be never forced to use advice from this article.
