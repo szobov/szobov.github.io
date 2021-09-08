@@ -34,7 +34,7 @@ layout: null
               {% assign html = image | split:"/>" | first %}
               {% assign tags = html | split:" " %}
               {% for tag in tags %}
-                 {% if tag contains 'src' %}
+                 {% if tag contains 'src=' %}
                      {% assign url = tag | split: 'src="' | last | remove: '"' %}
                      <image>
                          <url>{{ url | prepend: site.baseurl | prepend: site.url }}</url>
