@@ -10,7 +10,6 @@ tags:
 - bot
 ---
 
-
 * content
 {:toc}
 
@@ -24,17 +23,23 @@ I'm sure everyone has it's own best way to learn new words in a new language, bu
 I found Anki an amazing tool to solve aforementioned problem.
 But the only thing that make me straggle is creating a new deck with flashcards.
 
-Especially after my relocation I started to learn a new language and I wanted to learn words that I see and use in my daily life.
+Especially after my relocation when it bacame urgent to learn a new language and I wanted to learn words that I see and use in my daily life.
 That's how I came up to an idea of using a chat bot, which will help me to add everything I see in my daily life to a deck of flashcards.
 
+## Source of words
 
+It's vital to be able to speak. And many says grammar is import, but I say only vocabulary can let you speak.
+What could be the best source of new words? For me the answer is books.
+But the problem of books that it can be very hard to read the whole book on a language you're not fluent at. I think, it's also hard to you brain without seeing progress and with books it can be hard.
+You can start with books for children, but if you're not a kid it could be not very attrective.
 
-## Telegram bot
+For me the answer was Japanese comics called [manga](https://en.wikipedia.org/wiki/Manga).
+The beuty of manga is in the idea that it's made for all ages. Also many genres and beautful drawings made it very attractive to me.
+My choice was ["Dorohedoro"](https://en.wikipedia.org/wiki/Dorohedoro) translated in German.
+It has everything I need: the interesting story, wonderful drawings and a tons of informal lexicon.
 
-Motivation:
-* I don't like to make UI
-* bot already have a framework to build UI
-* There is already same bot, but it's not private and relies on online service
+## Messengers to the rescue
+
 
 ## Conclusion
 
