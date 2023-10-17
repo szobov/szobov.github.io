@@ -113,3 +113,7 @@ Now, we can run as many devices as we need and pinpoint bugs earlier.
 ### Disclaimer
 
 I'm not affiliated with any of the mentioned projects.
+
+### Acknowledgement
+
+This post is based on my work together with [Maria Matyushenko](https://www.linkedin.com/in/maria-matyushenko/).
