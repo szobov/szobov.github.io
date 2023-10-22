@@ -410,16 +410,6 @@
     };
     version = "0.15.1";
   };
-  jekyll-figure = {
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1qd20qiar337yzl3k6f4v4kc5vxfclk9mzjggyj4y1hc8k9fx4sl";
-      type = "gem";
-    };
-    version = "0.2.0";
-  };
   jekyll-gist = {
     dependencies = ["octokit"];
     groups = ["default"];
