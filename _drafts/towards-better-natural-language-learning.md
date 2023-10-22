@@ -15,7 +15,7 @@ tags:
 
 ## Background
 
-Some time ago, I started to learn new languages. In the beginning, it was English, then Japanese and now German.
+A while ago I started to learn new languages. In the beginning, it was English, then Japanese and now German.
 
 Since then, I have always tried to optimize this process using technologies. And since we now have a powerful computer in our pockets, I was looking for software to extend my vocabulary in a new language.
 
@@ -25,11 +25,15 @@ That is how I came to [Anki](https://apps.ankiweb.net).
 
 Briefly, it's an application or even a framework, that allows you to create [flashcards](https://en.wikipedia.org/wiki/Flashcard) and with a remarkable [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) algorithm learn effectively (at least for me) new things.
 
-I'm sure everyone has their best way to learn new words in a new language, but for me, a classical method of just writing words and trying to learn them all at a time doesn't work. At first, it felt like I had learned, but all the new knowledge swiftly faded.
+I'm sure everyone has their best way to learn new words in a new language, but for me, a classical method of just writing words and trying to learn them all at a time simply doesn't work. At first, it felt like I had learned, but all the new knowledge swiftly faded.
 
 I found Anki a fantastic tool to solve the problem mentioned above:
 * First, you learn new words in batches. The default setting is only **10** new words per day for a deck of words and **100** cards to repeat. The numbers are configurable, but it worked perfectly, so I don't feel overwhelmed.
 * Second, the spaced repetition algorithm helps words stick to your mind. The first time, you need to repeat a word in **10** minutes, then in **3** days and after a few more times, it can be more than **1** year.
+
+{% figure caption: "*heatmap of my repetition in Anki*" %}
+![anki heatmap](/assets/images/tech-for-language-learning/anki_heatmap.png)
+{% endfigure %}
 
 The next puzzle we need to solve is filling Anki with the words we want to learn!
 
@@ -46,6 +50,12 @@ For me, the answer was Japanese comics called [manga](https://en.wikipedia.org/w
 The beauty of manga is that it's made for all ages. Also, many genres and beautiful drawings made it very attractive to me.
 My choice was ["Dorohedoro"](https://en.wikipedia.org/wiki/Dorohedoro) translated into German.
 It has everything I need: an exciting story, beautiful drawings and a tons of informal lexicon.
+
+{% figure caption: "*me reading manga*" %}
+![me reading manga](/assets/images/tech-for-language-learning/me_reading_manga.jpg)
+{% endfigure %}
+
+
 
 ## Messengers to the rescue
 
