@@ -4,3 +4,4 @@ gem "github-pages"
 gem "jekyll-sitemap"
 gem "html-proofer"
 gem 'jekyll-seo-tag'
+gem "jekyll-figure"
