@@ -31,9 +31,8 @@ I found Anki a fantastic tool to solve the problem mentioned above:
 * First, you learn new words in batches. The default setting is only **10** new words per day for a deck of words and **100** cards to repeat. The numbers are configurable, but it worked perfectly, so I don't feel overwhelmed.
 * Second, the spaced repetition algorithm helps words stick to your mind. The first time, you need to repeat a word in **10** minutes, then in **3** days and after a few more times, it can be more than **1** year.
 
-{% figure caption: "*heatmap of my repetition in Anki*" %}
-![anki heatmap](/assets/images/tech-for-language-learning/anki_heatmap.png)
-{% endfigure %}
+
+{% include image.html url="/assets/images/tech-for-language-learning/anki_heatmap.png" description="heatmap of my repetition in Anki" %}
 
 The next puzzle we need to solve is filling Anki with the words we want to learn!
 
@@ -51,10 +50,7 @@ The beauty of manga is that it's made for all ages. Also, many genres and beauti
 My choice was ["Dorohedoro"](https://en.wikipedia.org/wiki/Dorohedoro) translated into German.
 It has everything I need: an exciting story, beautiful drawings and a tons of informal lexicon.
 
-{% figure caption: "*me reading manga*" %}
-![me reading manga](/assets/images/tech-for-language-learning/me_reading_manga.jpg)
-{% endfigure %}
-
+{% include image.html url="/assets/images/tech-for-language-learning/me_reading_manga.jpg" description="me reading manga" %}
 
 
 ## Messengers to the rescue
