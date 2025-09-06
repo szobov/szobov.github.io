@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "Monorepos and functional programming: make your robotics startup advance"
+title: "Make your robotics startup advance: monorepo and functions"
 categories:
-- management
+- software
 tags:
 - "code organization"
+- management
 - ci
 - monorepo
 - knowledge
+- functions
 ---
 
 * content
