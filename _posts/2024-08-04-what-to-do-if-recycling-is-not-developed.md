@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "When Recycling in a Challenge: Practical Tips to Make World Cleaner"
+title: "When Recycling is a Challenge: Practical Tips to Make World Cleaner"
 categories:
 - human
 tags:
