@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Make your robotics startup advance: monorepo and functions"
+title: "Advance your Robotics Startup: Monorepo and Functions"
 categories:
 - software
 tags:
@@ -68,10 +68,14 @@ Put the configuration once in the root directory, and that's it.
 
 ### CI
 
+{% include image.html url="/assets/images/monorepo-functions/reddit_comment.png" description="well framed" %}
+
 Wanna run tests and set up a GitHub action for that? Don't forget to set it up for all your repositories. Oh, now you want to trigger tests/builds in the dependent repositories when you push changes to the common one? If you have ever tried to do that, you know it's not the easiest task.
+
 
 Do you still want to do it, but don't want to deal with all this hustle?
 Use a monorepo. All your dependencies are at hand. Moreover, most likely, you want to run all of your unit tests when you make a change to ensure you didn't break other parts.
+
 
 ### Integration tests get easier
 
