@@ -158,3 +158,11 @@ def test_select_nearest_disposal():
     money = (0, 0); boxes = [(10,0),(1,1),(5,5)]
     assert select_nearest_disposal(money, boxes) == 1
 ```
+
+## Conclusion
+
+tldr;
+
+Default to a monorepo: pull services, apps, and shared assets into one place, keep linters/formatters at the root, build Docker right here, and tag the repo—not every component. Run the full test suite on each change. Push behavior into small, testable functions; keep classes thin and at the edges. Migrate steadily with git subtree add (no --squash) so history comes with you. Do these few things and your robotics team will spend less time wrangling toolchains and more time shipping real robots.
+
+Do this and you’ll be alright.
